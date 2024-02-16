@@ -1,0 +1,8 @@
+
+dist
+node_modules
+.vscode
+.yarn
+*.config.ts
+*.config.js
+*.d.ts
