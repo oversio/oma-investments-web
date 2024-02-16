@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+
 import { Navbar, NavbarLinkItem } from "../navbar/navbar";
 
 export function Layout() {
