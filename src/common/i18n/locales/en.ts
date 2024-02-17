@@ -6,6 +6,13 @@ export const en = {
   // Toast messages
   "toast.query.generic.error.unknown": "Something went wrong!",
   "toast.mutation.generic.error.unknown": "Something went wrong!",
+  // Settings
+  "config.company-types.investments.name": "Investments",
+  "config.company-types.investments.description": "Investments description",
+  "config.company-types.productive.name": "Productive",
+  "config.company-types.productive.description": "Productive description",
+  "config.company-types.bank.name": "Bank",
+  "config.company-types.bank.description": "Bank description",
   // Actions
   "actions.see-more": "({count}) more",
   "actions.see-less": "See less",

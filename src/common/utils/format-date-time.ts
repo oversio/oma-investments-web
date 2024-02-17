@@ -13,10 +13,5 @@ export const enum DateTimeFormatType {
   DateTimeZone = "DD MMM YYYY - HH:MM z",
 }
 
-export interface FormatDateTimeProps {
-  date: Date | string;
-  format?: DateTimeFormatType;
-}
-
-export const formatDateTime = ({ date, format }: FormatDateTimeProps) =>
+export const formatDateTime = (date: Date | string, format?: DateTimeFormatType) =>
   dayjs(date).format(format ?? DateTimeFormatType.DateTimeZone);

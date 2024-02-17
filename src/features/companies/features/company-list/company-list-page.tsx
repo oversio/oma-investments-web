@@ -1,21 +1,20 @@
-import { useSearchParams } from "react-router-dom";
+import { faPlusCircle } from "@fortawesome/pro-light-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "@nextui-org/react";
 
-import { useGetCompany } from "../../api/company-list/use-get-company";
+import { CompanyList } from "./components/company-list";
 
 export function CompanyListPage() {
-  const [searchParams] = useSearchParams();
-  const page = Number(searchParams.get("page") ?? 1);
-  const size = Number(searchParams.get("size") ?? 10);
-  const { data, isLoading } = useGetCompany(page, size);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
-      <h1>Company List</h1>
-      <ul>{data?.map(company => <li key={company.id}>{company.name}</li>)}</ul>
+      <div className="flex justify-between items-center mb-5">
+        <h2 className=" text-3xl">Companies list</h2>
+        <Button color="primary">
+          <FontAwesomeIcon icon={faPlusCircle} />
+          <span className="ml-2">Add company</span>
+        </Button>
+      </div>
+      <CompanyList />
     </div>
   );
 }

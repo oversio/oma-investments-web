@@ -17,7 +17,7 @@ const getEndpointPath = (page: number, size: number) => {
   });
 };
 
-export function useGetCompany(page: number, size: number) {
+export function useGetCompanyList(page: number, size: number) {
   const result = useQuery({
     queryKey: [CompanyQueryKey.List, page, size],
     queryFn: async () =>
