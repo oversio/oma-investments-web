@@ -1,7 +1,10 @@
 import { Avatar } from "@nextui-org/react";
+
+import { useAuthContext } from "../../../context/context";
 import { Dropdown } from "../dropdown/dropdown";
 
 export function UserDropdownMenu() {
+  const { logout } = useAuthContext();
   return (
     <Dropdown
       name="Profile Actions"
@@ -19,7 +22,7 @@ export function UserDropdownMenu() {
           showDivider: true,
         },
         { key: "settings", content: "My Settings", onClick: console.log },
-        { key: "logout", content: "Log Out", color: "danger", onClick: console.log },
+        { key: "logout", content: "Log Out", color: "danger", onClick: logout },
       ]}
     >
       <Avatar

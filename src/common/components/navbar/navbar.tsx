@@ -8,6 +8,7 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import { useState } from "react";
+
 import { useLinkActive } from "../../hooks/use-link-active";
 import { NavbarLink } from "./navbar-link";
 import { UserDropdownMenu } from "./user-dropdown-menu";
