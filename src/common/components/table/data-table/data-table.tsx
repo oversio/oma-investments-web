@@ -24,7 +24,6 @@ export function DataTable<TData extends { readonly id: ID }, TApiSortCol, TUrlSo
       isHeaderSticky
       classNames={{
         base: "max-h-[520px] overflow-scroll",
-        table: "min-h-[420px]",
       }}
       className={className}
     >

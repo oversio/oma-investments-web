@@ -1,3 +1,7 @@
 export enum CompanyQueryKey {
-  List = "companies",
+  Companies = "companies",
+  Details = "details",
+  List = "list",
+  Create = "create",
+  types = "types",
 }

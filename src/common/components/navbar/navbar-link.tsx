@@ -1,4 +1,5 @@
 import { Link, NavbarItem } from "@nextui-org/react";
+
 import { useLinkActive } from "../../hooks/use-link-active";
 
 interface NavbarLinkProps {

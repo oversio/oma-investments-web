@@ -11,8 +11,8 @@ export const en = {
   "config.company-types.investments.description": "Investments description",
   "config.company-types.productive.name": "Productive",
   "config.company-types.productive.description": "Productive description",
-  "config.company-types.bank.name": "Bank",
-  "config.company-types.bank.description": "Bank description",
+  "config.company-types.banks.name": "Bank",
+  "config.company-types.banks.description": "Bank description",
   // Actions
   "actions.see-more": "({count}) more",
   "actions.see-less": "See less",

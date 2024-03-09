@@ -5,7 +5,7 @@ import { API_PAGE_PARAM_NAME, API_PAGE_SIZE_PARAM_NAME } from "../../../../commo
 import { fetcherWithPagination } from "../../../../common/api/fetcher-with-pagination";
 import { CompanyQueryKey } from "../../../../common/api/support/company-query-key";
 import { AxiosMethod } from "../../../../common/api/types/axios-method";
-import { url } from "../../../../common/utils/url";
+import { url } from "../../../../common/api/utils/url";
 import { GetCompanyListItem } from "./get-company-list-item";
 
 const getEndpointPath = (page: number, size: number) => {
@@ -19,7 +19,7 @@ const getEndpointPath = (page: number, size: number) => {
 
 export function useGetCompanyList(page: number, size: number) {
   const result = useQuery({
-    queryKey: [CompanyQueryKey.List, page, size],
+    queryKey: [CompanyQueryKey.Companies, CompanyQueryKey.List, page, size],
     queryFn: async () =>
       fetcherWithPagination(AxiosMethod.Get, getEndpointPath(page, size), GetCompanyListItem),
   });

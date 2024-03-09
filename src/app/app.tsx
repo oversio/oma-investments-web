@@ -8,7 +8,9 @@ import { ToastContainer } from "../common/components/toast/components/toast-cont
 import { I18nProvider } from "../common/i18n/i18n-provider";
 import { AuthContextProvider } from "../context/context-provider";
 import { LoginPage } from "../features/auth/login-page";
+import { CompanyDetailsPage } from "../features/companies/features/company-details/company-details-page";
 import { CompanyListPage } from "../features/companies/features/company-list/company-list-page";
+import { CreateCompanyPanel } from "../features/companies/features/create-company/create-company-panel";
 import { DashboardPage } from "../features/dashboard/dashboard-page";
 import { SettingsPage } from "../features/settings/settings-page";
 
@@ -31,10 +33,15 @@ export function App() {
               >
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/" element={<Layout />}>
-                  <Route path="" element={<DashboardPage />} />
-                  <Route path="companies" element={<CompanyListPage />} />
-                  <Route path="settings" element={<SettingsPage />} />
+                  <Route path="/" index element={<DashboardPage />} />
+                  <Route path="/companies">
+                    <Route path="" element={<CompanyListPage />} />
+                    <Route path=":id" element={<CompanyDetailsPage />} />
+                    <Route path="create" element={<CreateCompanyPanel />} />
+                  </Route>
+                  <Route path="/settings" element={<SettingsPage />} />
                 </Route>
+                <Route path="*" element={<div>Not found</div>} />
               </Route>
             </Routes>
           </AuthContextProvider>

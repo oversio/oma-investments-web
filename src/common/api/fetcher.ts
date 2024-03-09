@@ -4,27 +4,28 @@ import { ZodType, ZodTypeDef } from "zod";
 import { logError } from "../logger/log-error";
 import { restClient } from "./rest-client";
 import { AxiosMethod } from "./types/axios-method";
+import { DataResponse } from "./types/data-response";
 
 export function fetcher<TItem, TApiItem, Def extends ZodTypeDef = ZodTypeDef>(
   method: AxiosMethod.Get | AxiosMethod.Delete,
   url: string,
   itemType: ZodType<TItem, Def, TApiItem>,
-): Promise<TItem>;
+): Promise<DataResponse<TItem, TApiItem, Def>>;
 
 export function fetcher<TItem, TApiItem, TPayload, Def extends ZodTypeDef = ZodTypeDef>(
   method: AxiosMethod.Post | AxiosMethod.Put,
   url: string,
   itemType: ZodType<TItem, Def, TApiItem>,
   body: TPayload,
-): Promise<TItem>;
+): Promise<DataResponse<TItem, TApiItem, Def>>;
 
 export function fetcher<TItem, TApiItem, TPayload, Def extends ZodTypeDef = ZodTypeDef>(
   method: AxiosMethod,
   url: string,
   itemType: ZodType<TItem, Def, TApiItem>,
   body?: TPayload,
-): Promise<TItem> {
-  return restClient[method]<unknown, AxiosResponse<{ data: unknown }, TPayload>, TPayload>(
+): Promise<DataResponse<TItem, TApiItem, Def>> {
+  return restClient[method]<unknown, AxiosResponse<unknown, TPayload>, TPayload>(
     url,
     body as TPayload & AxiosRequestConfig<TPayload>,
   )

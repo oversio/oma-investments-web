@@ -1,9 +1,8 @@
 import { z, ZodType, ZodTypeDef } from "zod";
 
-import { apiListDataResponse } from "./list-data-response";
-
 export function apiListDataWithPagination<T, A, D extends ZodTypeDef = ZodTypeDef>(item: ZodType<T, D, A>) {
-  return apiListDataResponse(item).extend({
+  return z.object({
+    data: z.array(item),
     pagination: z.object({
       page: z.number(),
       limit: z.number(),

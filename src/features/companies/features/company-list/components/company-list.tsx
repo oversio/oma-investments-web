@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { DataTable } from "../../../../../common/components/table/data-table/data-table";
 import { GetCompanyListItem } from "../../../api/company-list/get-company-list-item";
@@ -6,15 +6,14 @@ import { useGetCompanyList } from "../../../api/company-list/use-get-company-lis
 import { useCompanyListColumns } from "../hooks/use-company-list-columns";
 
 export function CompanyList() {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get("page") ?? 1);
   const size = Number(searchParams.get("size") ?? 10);
   const { data, isLoading } = useGetCompanyList(page, size);
   const columns = useCompanyListColumns();
 
-  const onClickRow = (company: GetCompanyListItem) => {
-    console.log(company);
-  };
+  const onClickRow = ({ id }: GetCompanyListItem) => navigate(`/companies/${id}`);
 
   return (
     <DataTable
