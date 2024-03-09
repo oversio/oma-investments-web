@@ -28,8 +28,8 @@ export function DataTable<TData extends { readonly id: ID }, TApiSortCol, TUrlSo
       className={className}
     >
       <TableHeader>
-        {columns.map(({ title, key, className }) => (
-          <TableColumn key={String(key)}>
+        {columns.map(({ title, key, className, width, align }) => (
+          <TableColumn key={String(key)} width={width} align={align}>
             <div className={classMerge(" flex items-center h-full uppercase", className)}>{title}</div>
           </TableColumn>
         ))}

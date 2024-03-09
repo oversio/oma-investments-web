@@ -1,19 +1,16 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button as UIButton, ButtonProps as UIButtonProps } from "@nextui-org/react";
+import { Button as UIButton, ButtonProps } from "@nextui-org/react";
+import { forwardRef } from "react";
 
 import { classMerge } from "../../utils/class-merge";
 
-export interface ButtonProps extends UIButtonProps {
-  icon?: IconDefinition;
-  iconClassName?: string;
-}
+export const Button = forwardRef<HTMLButtonElement | null, ButtonProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <UIButton ref={ref} {...props} className={classMerge(" flex justify-center items-center", className)}>
+        {children}
+      </UIButton>
+    );
+  },
+);
 
-export function Button({ icon, iconClassName, className, children, ...props }: ButtonProps) {
-  return (
-    <UIButton {...props} className={classMerge(" flex justify-center items-center", className)}>
-      {icon ? <FontAwesomeIcon icon={icon} className={classMerge("", iconClassName)} /> : null}
-      {children}
-    </UIButton>
-  );
-}
+Button.displayName = "Button";

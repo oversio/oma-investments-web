@@ -1,47 +1,36 @@
-import { faArrowLeft } from "@fortawesome/pro-light-svg-icons";
-import { Link } from "@nextui-org/react";
-import { useParams } from "react-router";
+import { faPlus } from "@fortawesome/pro-light-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Outlet, useParams } from "react-router";
 
-import { IconButton } from "../../../../common/components/icon-button/icon-button";
-import { Skeleton } from "../../../../common/components/skeleton/skeleton";
-import { Timeline } from "../../../../common/components/timeline/timeline";
-import { useGetCompany } from "../../api/company-details/use-get-company";
-import { DividendsList } from "./components/dividends-list";
+import { Layout } from "../../../../common/components/layout/layout";
+import { Link } from "../../../../common/components/link/link";
+import { DividendsList } from "../../../dividends/features/dividend-list/components/dividends-list";
+import { CompanyActions } from "./components/company-actions";
+import { CompanyDetailsTitle } from "./components/company-details-title";
+import { RelevantFacts } from "./components/relevant-facts";
 
 export function CompanyDetailsPage() {
   const { id } = useParams();
-  const { data, isLoading, isError } = useGetCompany(id);
-
-  const timelineItems =
-    data?.relevantFacts.map(fact => ({
-      date: fact.dateTime,
-      description: fact.description,
-    })) ?? [];
 
   return (
-    <div>
-      <div className="flex items-center mb-5 gap-3">
-        <Link href="/companies">
-          <IconButton tabIndex={-1} icon={faArrowLeft} />
-        </Link>
-        <h1 className=" text-3xl">
-          {isLoading || isError ? <Skeleton className=" w-80 h-8" /> : data?.name}{" "}
-          <span className=" uppercase">({data?.mnemonic})</span>
-        </h1>
+    <Layout>
+      <div className="flex justify-between">
+        <CompanyDetailsTitle companyId={id} />
+        <CompanyActions />
       </div>
-      <p className="mb-7">{isLoading || isError ? <Skeleton className=" w-96 h-6" /> : data?.description}</p>
-      <div className="grid grid-cols-2 gap-3">
-        <div className="flex flex-col">
-          <h3 className=" text-2xl mb-2">Dividendos pagados</h3>
-          <DividendsList companyId={id} />
-        </div>
-        <div className=" flex flex-col">
-          <h3 className=" text-2xl mb-2">Últimos hechos relevantes</h3>
-          <div className="rounded-large overflow-scroll max-h-[75vh]">
-            <Timeline items={timelineItems} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <section className="flex flex-col gap-3">
+          <div className="flex justify-between items-center">
+            <h3 className=" text-2xl mb-2">Dividendos pagados</h3>
+            <Link to="add-dividend" startContent={<FontAwesomeIcon icon={faPlus} />} color="primary">
+              Agregar nuevo
+            </Link>
           </div>
-        </div>
+          <DividendsList companyId={id} />
+        </section>
+        <RelevantFacts companyId={id} />
       </div>
-    </div>
+      <Outlet />
+    </Layout>
   );
 }

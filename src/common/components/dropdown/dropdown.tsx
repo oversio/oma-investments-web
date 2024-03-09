@@ -1,11 +1,11 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
+  Dropdown as UIDropdown,
   DropdownItem,
   DropdownMenu,
+  DropdownProps as UIDropdownProps,
   DropdownTrigger,
   MenuItemProps,
-  Dropdown as UIDropdown,
-  DropdownProps as UIDropdownProps,
 } from "@nextui-org/react";
 import { PropsWithChildren, ReactNode } from "react";
 

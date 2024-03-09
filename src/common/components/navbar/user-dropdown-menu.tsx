@@ -17,10 +17,12 @@ export function UserDropdownMenu() {
               <p className="text-sm text-gray-400">over.martinez@omasolutions.cl</p>
             </>
           ),
+          // eslint-disable-next-line no-console
           onClick: console.log,
           className: "flex flex-col",
           showDivider: true,
         },
+        // eslint-disable-next-line no-console
         { key: "settings", content: "My Settings", onClick: console.log },
         { key: "logout", content: "Log Out", color: "danger", onClick: logout },
       ]}

@@ -5,6 +5,7 @@ import { DateTimeFormatType, formatDateTime } from "../../utils/format-date-time
 import { randomTimelineColor } from "./utils/random-timeline-color";
 
 interface TimeLineItemProps {
+  key: string;
   date: Date;
   title?: string;
   description: string;
@@ -19,41 +20,45 @@ interface TimeLineProps {
 export function Timeline({ items, initialLeft = true }: TimeLineProps) {
   let currentSideLeft = initialLeft;
   return (
-    <div className="container dark:bg-default-50 mx-auto w-full h-auto">
-      <div className="relative wrap overflow-hidden p-10 h-full">
-        <div className="border-2-2 absolute border-opacity-20 border-red-700 h-full border left-1/2" />
+    <div className="dark:bg-default-50 w-full h-auto min-h-20">
+      {items.length ? (
+        <div className="relative wrap overflow-hidden p-10 h-full">
+          <div className="border-2-2 absolute border-opacity-20 border-red-700 h-full border left-1/2" />
 
-        {items.map((item, i) => {
-          currentSideLeft = !currentSideLeft;
-          const { chip, card } = stylesMap[item.color ?? randomTimelineColor()];
-          return (
-            <div
-              key={i}
-              className={classMerge(
-                "mb-8 flex justify-between items-center w-full",
-                currentSideLeft && "flex-row-reverse",
-              )}
-            >
-              <div className="w-5/12" />
-              <div className="z-20 dark:bg-default-50">
-                <Chip color={chip} size="sm" variant="flat">
-                  {formatDateTime(item.date, DateTimeFormatType.Date)}
-                </Chip>
+          {items.map(item => {
+            currentSideLeft = !currentSideLeft;
+            const { chip, card } = stylesMap[item.color ?? randomTimelineColor()];
+            return (
+              <div
+                key={item.key}
+                className={classMerge(
+                  "mb-8 flex justify-between items-center w-full",
+                  currentSideLeft && "flex-row-reverse",
+                )}
+              >
+                <div className="w-5/12" />
+                <div className="z-20 dark:bg-default-50">
+                  <Chip color={chip} size="sm" variant="flat">
+                    {formatDateTime(item.date, DateTimeFormatType.Date)}
+                  </Chip>
+                </div>
+                <div className="w-5/12">
+                  <Card className={classMerge("px-3", card)}>
+                    <CardHeader>
+                      <h3>{item.title ?? formatDateTime(item.date, DateTimeFormatType.Date)}</h3>
+                    </CardHeader>
+                    <CardBody>
+                      <p className="text-sm">{item.description}</p>
+                    </CardBody>
+                  </Card>
+                </div>
               </div>
-              <div className="w-5/12">
-                <Card className={classMerge("px-3", card)}>
-                  <CardHeader>
-                    <h3 className=" text-lg">
-                      {item.title ?? formatDateTime(item.date, DateTimeFormatType.Date)}
-                    </h3>
-                  </CardHeader>
-                  <CardBody>{item.description}</CardBody>
-                </Card>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className=" flex items-center h-20 justify-center text-lg">No hay hechos relevantes</div>
+      )}
     </div>
   );
 }

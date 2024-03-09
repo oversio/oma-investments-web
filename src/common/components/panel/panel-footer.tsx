@@ -1,4 +1,6 @@
-import { Button, ButtonProps } from "../button/button";
+import { ButtonProps } from "@nextui-org/react";
+
+import { Button } from "../button/button";
 import { Skeleton } from "../skeleton/skeleton";
 
 export type ButtonAndLabel = ButtonProps & {

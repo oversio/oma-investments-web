@@ -1,4 +1,5 @@
 import { faPlus } from "@fortawesome/pro-light-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -38,10 +39,10 @@ export function CreateCompanyPanel() {
       formProps={form}
       onSubmit={createCompany}
       successNavigationPath={getCompanyDetailPath}
-      title="Add Company"
+      title="Agregar empresa"
       submitButtonProps={{
         label: "Agregar",
-        icon: faPlus,
+        startContent: <FontAwesomeIcon icon={faPlus} />,
         isLoading: isPending || isLoading || isError || isMutationError,
       }}
     >

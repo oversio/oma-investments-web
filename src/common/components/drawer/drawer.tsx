@@ -3,9 +3,9 @@ import { KeyboardEvent } from "react";
 import { classMerge } from "../../utils/class-merge";
 
 const sizeMap = {
-  sm: "w-64",
-  md: "w-80",
-  lg: "w-96",
+  sm: "sm:w-64 w-full",
+  md: "sm:w-80 w-full",
+  lg: "sm:w-96 w-full",
 };
 
 export interface DrawerProps {

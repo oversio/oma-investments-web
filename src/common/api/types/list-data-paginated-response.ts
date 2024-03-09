@@ -5,7 +5,7 @@ export function apiListDataWithPagination<T, A, D extends ZodTypeDef = ZodTypeDe
     data: z.array(item),
     pagination: z.object({
       page: z.number(),
-      limit: z.number(),
+      size: z.number(),
       total: z.number(),
     }),
   });
