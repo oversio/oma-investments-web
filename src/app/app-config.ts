@@ -5,7 +5,7 @@ export const appConfig = {
   logo: {
     svgWhite: OMAWhiteLogoSvg,
   },
-  apiBaseUrl: "http://localhost:3001/api",
+  apiBaseUrl: import.meta.env.VITE_API_BASE_URL as string,
   getLoginUrl: (method: AuthenticationMethod, redirectTo?: string) => {
     const redirect = redirectTo ?? window.location.origin;
     return `${appConfig.apiBaseUrl}/auth/${method}?redirectTo=${redirect}`;
