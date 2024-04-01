@@ -1,6 +1,8 @@
-import { Link, NavbarItem } from "@nextui-org/react";
+import { NavbarItem } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 import { useLinkActive } from "../../hooks/use-link-active";
+import { classMerge } from "../../utils/class-merge";
 
 interface NavbarLinkProps {
   label: string;
@@ -13,7 +15,7 @@ export function NavbarLink({ label, path }: NavbarLinkProps) {
 
   return (
     <NavbarItem isActive={isActive} aria-current={isActive ? "page" : undefined}>
-      <Link color={isActive ? undefined : "foreground"} href={path}>
+      <Link to={path} className={classMerge(isActive ? " text-blue-600" : "")}>
         {label}
       </Link>
     </NavbarItem>

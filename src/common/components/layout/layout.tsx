@@ -1,32 +1,14 @@
-import { Navigate, Outlet } from "react-router";
+import { Navbar } from "../navbar/navbar";
 
-import { useAuthContext } from "../../../context/context";
-import { Navbar, NavbarLinkItem } from "../navbar/navbar";
-import { LoadingPageState } from "./loading-page-state";
+interface LayoutProps {
+  children?: React.ReactNode;
+}
 
-export function Layout() {
-  const { isAuthenticated } = useAuthContext();
-
-  if (isAuthenticated === null) {
-    return <LoadingPageState />;
-  }
-
-  if (isAuthenticated === false) {
-    return <Navigate to="/login" />;
-  }
-
-  const links: NavbarLinkItem[] = [
-    { label: "Dashboard", path: "/" },
-    { label: "Companies", path: "/companies" },
-    { label: "Settings", path: "/settings" },
-  ];
-
+export function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col h-screen">
-      <Navbar links={links} />
-      <main className="flex-1 p-4">
-        <Outlet />
-      </main>
+      <Navbar />
+      <main className="flex-1 p-4">{children}</main>
     </div>
   );
 }

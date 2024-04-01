@@ -9,7 +9,7 @@ export function CompanyListNameCell({ name, description, isLoading }: CompanyLis
     </div>
   ) : (
     <div>
-      <div className="font-bold text-large">{name}</div>
+      <div className="font-bold text-large capitalize">{name}</div>
       <div>{description}</div>
     </div>
   );

@@ -1,14 +1,25 @@
 import { useMemo } from "react";
 
 import { Column } from "../../../../../common/components/table/data-table/types";
-import { GetDividend } from "../../../api/company-details/get-dividends";
-import { DividendAmountCell } from "../components/cells/dividend-amount-cell";
-import { DividendDateCell } from "../components/cells/dividend-date-cell";
+import { GetDividendListItem } from "../../../../dividends/features/dividend-list/api/get-dividend-list-item";
+import { DividendAmountCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-amount-cell";
+import { DividendDateCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-date-cell";
+import { DividendTypeCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-type-cell";
 
 export function useDividendsListColumns() {
   return useMemo(
     () =>
       [
+        {
+          key: "type",
+          title: "Tipo",
+          align: "start",
+          sorting: {
+            apiColumnName: "type.name",
+            order: "asc",
+          },
+          component: DividendTypeCell,
+        },
         {
           key: "date",
           title: "Fecha de pago",
@@ -22,14 +33,14 @@ export function useDividendsListColumns() {
         {
           key: "amount",
           title: "Monto pagado",
-          align: "start",
+          align: "end",
           sorting: {
             apiColumnName: "amount",
             order: "asc",
           },
           component: DividendAmountCell,
         },
-      ] as Column<GetDividend, string, string>[],
+      ] as Column<GetDividendListItem, string, string>[],
     [],
   );
 }

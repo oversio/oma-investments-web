@@ -5,13 +5,13 @@ import { API_PAGE_PARAM_NAME, API_PAGE_SIZE_PARAM_NAME } from "../../../../commo
 import { fetcherWithPagination } from "../../../../common/api/fetcher-with-pagination";
 import { CompanyQueryKey } from "../../../../common/api/support/company-query-key";
 import { AxiosMethod } from "../../../../common/api/types/axios-method";
-import { url } from "../../../../common/api/utils/url";
+import { apiPath } from "../../../../common/api/utils/url";
 import { GetCompanyListItem } from "./get-company-list-item";
 
 const getEndpointPath = (page: number, size: number) => {
-  return url(ApiEntryPoint.companies.list, {
+  return apiPath(ApiEntryPoint.companies.list, {
     query: {
-      [API_PAGE_PARAM_NAME]: (page - 1).toString(),
+      [API_PAGE_PARAM_NAME]: page.toString(),
       [API_PAGE_SIZE_PARAM_NAME]: size.toString(),
     },
   });

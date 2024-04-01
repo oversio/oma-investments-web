@@ -33,6 +33,7 @@ export function useCompanyListColumns() {
           order: "asc",
         },
         component: CompanyListMnemonicCell,
+        width: "10%",
       },
       {
         key: "type",
@@ -45,6 +46,7 @@ export function useCompanyListColumns() {
         },
         component: CompanyListTypeCell,
         className: " justify-center",
+        width: "15%",
       },
       {
         key: "created-at",
@@ -57,6 +59,7 @@ export function useCompanyListColumns() {
         },
         component: CompanyListDateCell,
         className: " justify-center",
+        width: "15%",
       },
       {
         key: "updated-at",
@@ -69,6 +72,7 @@ export function useCompanyListColumns() {
         },
         component: CompanyListDateCell,
         className: " justify-center",
+        width: "15%",
       },
     ] as Column<GetCompanyListItem, CompanyListApiColumn, CompanyListUrlColumn>[];
   }, []);

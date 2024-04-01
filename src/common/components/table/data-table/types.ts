@@ -1,4 +1,4 @@
-import { TableProps } from "@nextui-org/react";
+import { TableColumnProps, TableProps } from "@nextui-org/react";
 import { ReactNode } from "react";
 
 export const enum SortOrder {
@@ -16,6 +16,7 @@ export type ColumnCellProps<T> = T & { isLoading: boolean };
 
 export interface Column<TData, TApiSortCol, TUrlSortCol> {
   key: string;
+  width?: TableColumnProps<TData>["width"];
   title?: ReactNode;
   align?: "center" | "start" | "end";
   sorting?: Sorting<TApiSortCol, TUrlSortCol>;

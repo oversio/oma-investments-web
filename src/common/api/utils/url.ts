@@ -3,7 +3,7 @@ type QueryParams = {
   params?: Record<string, string | null | undefined>;
 };
 
-export function url(path: string, { query, params }: QueryParams = {}) {
+export function apiPath(path: string, { query, params }: QueryParams = {}) {
   return replaceParamsInPath(path, params) + getQueryString(query);
 }
 

@@ -13,7 +13,7 @@ export function CompanyList() {
   const { data, isLoading } = useGetCompanyList(page, size);
   const columns = useCompanyListColumns();
 
-  const onClickRow = ({ id }: GetCompanyListItem) => navigate(`/companies/${id}`);
+  const onClickRow = ({ id }: GetCompanyListItem) => navigate(id);
 
   return (
     <DataTable

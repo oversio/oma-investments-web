@@ -6,13 +6,23 @@ export const en = {
   // Toast messages
   "toast.query.generic.error.unknown": "Something went wrong!",
   "toast.mutation.generic.error.unknown": "Something went wrong!",
-  // Settings
+  // Settings - Company types
   "config.company-types.investments.name": "Investments",
   "config.company-types.investments.description": "Investments description",
   "config.company-types.productive.name": "Productive",
   "config.company-types.productive.description": "Productive description",
   "config.company-types.banks.name": "Bank",
   "config.company-types.banks.description": "Bank description",
+  // Settings - Dividend types
+  "config.dividend-types.definitive.name": "Definitive",
+  "config.dividend-types.definitive.description": "Definitive description",
+  "config.dividend-types.provisional.name": "Provisional",
+  "config.dividend-types.provisional.description": "Provisional description",
+  "config.dividend-types.additional.name": "Additional",
+  "config.dividend-types.additional.description": "Additional description",
+  "config.dividend-types.eventual.name": "Eventual",
+  "config.dividend-types.eventual.description": "Eventual description",
+
   // Actions
   "actions.see-more": "({count}) more",
   "actions.see-less": "See less",

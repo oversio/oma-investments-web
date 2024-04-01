@@ -1,5 +1,4 @@
 import {
-  Link,
   Navbar as NUINavbar,
   NavbarBrand,
   NavbarContent,
@@ -8,20 +7,15 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
+import { menuItems } from "../../config/menu-item";
 import { useLinkActive } from "../../hooks/use-link-active";
+import { classMerge } from "../../utils/class-merge";
 import { NavbarLink } from "./navbar-link";
 import { UserDropdownMenu } from "./user-dropdown-menu";
 
-export interface NavbarLinkItem {
-  label: string;
-  path: string;
-}
-interface NavbarProps {
-  links: NavbarLinkItem[];
-}
-
-export function Navbar({ links }: NavbarProps) {
+export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const checkPath = useLinkActive();
 
@@ -34,7 +28,7 @@ export function Navbar({ links }: NavbarProps) {
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {links.map(link => (
+        {menuItems.map(link => (
           <NavbarLink key={link.path} label={link.label} path={link.path} />
         ))}
       </NavbarContent>
@@ -42,13 +36,11 @@ export function Navbar({ links }: NavbarProps) {
         <UserDropdownMenu />
       </NavbarContent>
       <NavbarMenu>
-        {links.map(link => (
+        {menuItems.map(link => (
           <NavbarMenuItem key={link.path}>
             <Link
-              color={checkPath(link.path) ? undefined : "foreground"}
-              className="w-full"
-              href={link.path}
-              size="lg"
+              className={classMerge(" w-full", checkPath(link.path) ? " text-blue-600" : "")}
+              to={link.path}
             >
               {link.label}
             </Link>
