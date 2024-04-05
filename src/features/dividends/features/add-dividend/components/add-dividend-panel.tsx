@@ -4,14 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 
-import { FormInput } from "../../../../../common/components/form-input/form-input";
-import { FormSelect } from "../../../../../common/components/form-select/form-select";
+import { FormInput } from "../../../../../common/components/form/form-input/form-input";
+import { FormSelect } from "../../../../../common/components/form/form-select/form-select";
 import { SideForm } from "../../../../../common/components/side-form/side-form";
 import { useTranslate } from "../../../../../common/i18n/hooks/use-translate";
 import { isTranslationKey } from "../../../../../common/i18n/utils/is-translation-key";
 import { useGetDividendTypeList } from "../../../../settings/api/dividend-type/use-get-dividend-type-list";
+import { useAddDividend } from "../../../api/add-dividend/use-add-dividend";
 import { AddDividendSchema } from "../add-dividend-schema";
-import { useAddDividend } from "../api/use-add-dividend";
 
 export function AddDividendPanel() {
   const t = useTranslate();
@@ -35,10 +35,12 @@ export function AddDividendPanel() {
       onSubmit={handleSubmit}
       successNavigationPath=".."
       title="Agregar dividendo"
+      isLoading={isLoading || isPending}
       submitButtonProps={{
         label: "Agregar",
         startContent: <FontAwesomeIcon icon={faPlus} />,
-        isLoading: isPending || isError,
+        disabled: isError || isPending,
+        isLoading: isPending,
       }}
     >
       <FormSelect

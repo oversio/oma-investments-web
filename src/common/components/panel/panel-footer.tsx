@@ -18,7 +18,7 @@ export function PanelFooter({ isLoading, confirmButton, cancelButton, onClose }:
   return (
     <div className=" box-border h-24 flex justify-end items-center p-5 gap-2 border-t border-default-200">
       {cancelButton ? (
-        <Button variant="ghost" onClick={onClose} {...cancelButton}>
+        <Button variant="flat" onClick={onClose} {...cancelButton}>
           {cancelButton.label}
         </Button>
       ) : null}

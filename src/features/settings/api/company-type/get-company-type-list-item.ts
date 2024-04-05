@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { ApiGetCompanyType } from "../../../companies/api/company-list/get-company-type";
+import { ApiGetCompanyType } from "../../../companies/api/companies-list/get-company-type";
 
 export const ApiGetCompanyTypeListItem = ApiGetCompanyType.extend({
   description: z.string().optional().nullable(),

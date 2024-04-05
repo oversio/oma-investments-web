@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Link } from "../../../../../common/components/link/link";
 import { Skeleton } from "../../../../../common/components/skeleton/skeleton";
-import { useGetCompany } from "../../../api/company-details/use-get-company";
+import { useGetCompany } from "../../../api/get-company/use-get-company";
 
 interface CompanyDetailsTitleProps {
   companyId?: string;
