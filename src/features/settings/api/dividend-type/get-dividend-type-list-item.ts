@@ -1,12 +1,15 @@
 import { z } from "zod";
 
+import { DateTime } from "../../../../common/types";
+import { DividendTypeCode } from "../../types";
+
 export const ApiGetDividendTypeListItem = z.object({
   _id: z.string(),
   name: z.string(),
   description: z.string(),
-  order: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
+  code: z.nativeEnum(DividendTypeCode),
+  createdAt: DateTime,
+  updatedAt: DateTime,
 });
 
 export type ApiGetDividendTypeListItem = z.input<typeof ApiGetDividendTypeListItem>;
@@ -27,7 +30,5 @@ export type GetDividendTypeListItem = z.infer<typeof GetDividendTypeListItem>;
 export const ApiGetDividendTypeList = z.array(ApiGetDividendTypeListItem);
 export type ApiGetDividendTypeList = z.infer<typeof ApiGetDividendTypeList>;
 
-export const GetDividendTypeList = ApiGetDividendTypeList.transform(data =>
-  data.map(item => GetDividendTypeListItem.parse(item)),
-);
+export const GetDividendTypeList = ApiGetDividendTypeList.transform(data => data.map(getDividendTransformer));
 export type GetDividendTypeList = z.infer<typeof GetDividendTypeList>;

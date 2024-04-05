@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Link } from "../../../../../common/components/link/link";
 import { Timeline } from "../../../../../common/components/timeline/timeline";
-import { useGetCompany } from "../../../api/company-details/use-get-company";
+import { useGetCompany } from "../../../api/get-company/use-get-company";
 
 interface RelevantFactsProps {
   companyId?: string;
@@ -23,7 +23,12 @@ export function RelevantFacts({ companyId }: RelevantFactsProps) {
     <section className=" flex flex-col gap-3">
       <div className="flex justify-between items-center">
         <h3 className=" text-2xl mb-2">Últimos hechos relevantes</h3>
-        <Link to="relevant-fact" startContent={<FontAwesomeIcon icon={faPlus} />} color="primary">
+        <Link
+          to="relevant-fact"
+          variant="flat"
+          startContent={<FontAwesomeIcon icon={faPlus} />}
+          color="primary"
+        >
           Agregar nuevo
         </Link>
       </div>

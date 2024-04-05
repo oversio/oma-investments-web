@@ -8,6 +8,7 @@ export const ApiEntryPoint = {
     details: "/companies/:id",
     addDividend: "/company/:id/dividends",
     dividendList: "/company/:id/dividends",
+    uploadDividend: "/company/:id/dividends/upload",
   },
   settings: {
     companyTypes: "/settings/company-types",

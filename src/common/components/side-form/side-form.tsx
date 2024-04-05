@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { FieldValues, FormProvider, SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useNavigate } from "react-router";
 
+import { OnSubmitCallback } from "../../types";
 import { classMerge } from "../../utils/class-merge";
 import { Panel, PanelProps } from "../panel/panel";
 import { ButtonAndLabel } from "../panel/panel-footer";
 
 const SIDE_FORM_ID = "side-form-id";
 
-export type OnSubmitCallback<TFieldValues, TResult = unknown> = (
-  input: TFieldValues,
-) => Promise<TResult> | TResult;
 interface SideFormProps<TFieldValues extends FieldValues, TResult> {
   formProps: UseFormReturn<TFieldValues>;
   onSubmit: OnSubmitCallback<TFieldValues, TResult>;
@@ -64,7 +62,7 @@ export function SideForm<TFieldValues extends FieldValues, TResult = unknown>({
       title={title}
       cancelButton={{
         label: "Cancelar",
-        disabled: isLoading,
+        disabled: isSubmitting || isLoading,
       }}
       confirmButton={{
         ...submitButtonProps,
@@ -72,9 +70,9 @@ export function SideForm<TFieldValues extends FieldValues, TResult = unknown>({
         color: "primary",
         type: "submit",
         form: SIDE_FORM_ID,
-        disabled: isSubmitting || submitButtonProps?.disabled,
+        disabled: submitButtonProps?.disabled,
         className: classMerge("min-w-[100px]", submitButtonProps?.className),
-        isLoading: isSubmitting,
+        isLoading: isSubmitting || submitButtonProps?.isLoading,
       }}
     >
       <FormProvider {...formProps}>

@@ -17,3 +17,7 @@ export const DateTime = z.string().transform((value, ctx) => {
 });
 
 export type DateTime = z.infer<typeof DateTime>;
+
+export type OnSubmitCallback<TFieldValues, TResult = unknown> = (
+  input: TFieldValues,
+) => Promise<TResult> | TResult;

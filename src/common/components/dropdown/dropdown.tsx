@@ -1,4 +1,3 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   Dropdown as UIDropdown,
   DropdownItem,
@@ -9,7 +8,7 @@ import {
 } from "@nextui-org/react";
 import { PropsWithChildren, ReactNode } from "react";
 
-type DropdownItemProps = {
+export type DropdownItemProps = {
   content: ReactNode;
   key: string;
   onClick?: () => void;
@@ -18,8 +17,8 @@ type DropdownItemProps = {
   color?: MenuItemProps["color"];
   variant?: MenuItemProps["variant"];
   disabled?: boolean;
-  startIcon?: IconDefinition;
-  endIcon?: IconDefinition;
+  startContent?: ReactNode;
+  endContent?: ReactNode;
   description?: string;
   showDivider?: boolean;
 };
@@ -34,7 +33,7 @@ export function Dropdown({ children, name, items, placement = "bottom-end", ...p
       <DropdownTrigger>{children}</DropdownTrigger>
       <DropdownMenu variant="flat" aria-label={name}>
         {items.map(({ key, content, onClick, ...itemProps }) => (
-          <DropdownItem key={key} textValue={key} onPress={onClick ? onClick : undefined} {...itemProps}>
+          <DropdownItem key={key} textValue={key} onPress={onClick ?? undefined} {...itemProps}>
             {content}
           </DropdownItem>
         ))}

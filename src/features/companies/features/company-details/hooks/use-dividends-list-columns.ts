@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { Column } from "../../../../../common/components/table/data-table/types";
-import { GetDividendListItem } from "../../../../dividends/features/dividend-list/api/get-dividend-list-item";
+import { GetDividendListItem } from "../../../../dividends/api/dividend-list/get-dividend-list-item";
 import { DividendAmountCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-amount-cell";
 import { DividendDateCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-date-cell";
 import { DividendTypeCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-type-cell";

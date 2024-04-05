@@ -8,8 +8,8 @@ import { ToastContainer } from "../common/components/toast/components/toast-cont
 import { I18nProvider } from "../common/i18n/i18n-provider";
 import { AuthContextProvider } from "../context/context-provider";
 import { LoginPage } from "../features/auth/login-page";
+import { CompanyListPage } from "../features/companies/features/companies-list/company-list-page";
 import { CompanyDetailsPage } from "../features/companies/features/company-details/company-details-page";
-import { CompanyListPage } from "../features/companies/features/company-list/company-list-page";
 import { CreateCompanyPanel } from "../features/companies/features/create-company/create-company-panel";
 import { DashboardPage } from "../features/dashboard/dashboard-page";
 import { AddDividendPanel } from "../features/dividends/features/add-dividend/components/add-dividend-panel";
