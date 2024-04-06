@@ -11,18 +11,19 @@ export const ApiGetUser = z.object({
   email: z.string(),
   picture: z.string().optional(),
   isActive: z.boolean(),
-  locale: z.nativeEnum(Locales).optional(),
+  locale: z.string().optional(),
 });
 
 export type ApiGetUser = z.infer<typeof ApiGetUser>;
 
 export function getUserTransformer<T extends z.infer<typeof ApiGetUser>>({ _id, ...data }: T) {
   return {
+    ...data,
     id: _id,
     givenName: data.givenName ?? "",
     familyName: data.familyName ?? "",
     picture: data.picture ?? "",
-    ...data,
+    locale: (data.locale === Locales.En ? Locales.En : Locales.Es) as Locales,
   };
 }
 
