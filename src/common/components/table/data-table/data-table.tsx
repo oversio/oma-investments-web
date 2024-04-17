@@ -6,14 +6,14 @@ import { DataTableProps } from "./types";
 
 const DEFAULT_LOADING_ROWS = 10;
 
-export function DataTable<TData extends { readonly id: ID }, TApiSortCol, TUrlSortCol>({
+export function DataTable<TData extends { readonly id: ID }, TApiSortCol, TUrlSortCol, TContext>({
   name,
   columns,
   data,
   isLoading,
   onClickRow,
   className,
-}: DataTableProps<TData, TApiSortCol, TUrlSortCol>) {
+}: DataTableProps<TData, TApiSortCol, TUrlSortCol, TContext>) {
   const records = isLoading
     ? (Array.from({ length: DEFAULT_LOADING_ROWS }).map((_, i) => ({ id: String(i) })) as TData[])
     : [...data];
@@ -28,8 +28,8 @@ export function DataTable<TData extends { readonly id: ID }, TApiSortCol, TUrlSo
       className={className}
     >
       <TableHeader>
-        {columns.map(({ title, key, className, width, align }) => (
-          <TableColumn key={String(key)} width={width} align={align}>
+        {columns.map(({ title, key, className, width }) => (
+          <TableColumn key={String(key)} width={width}>
             <div className={classMerge(" flex items-center h-full uppercase", className)}>{title}</div>
           </TableColumn>
         ))}

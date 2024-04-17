@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 
 import { Column } from "../../../../../common/components/table/data-table/types";
-import { GetDividendListItem } from "../../../../dividends/api/dividend-list/get-dividend-list-item";
-import { DividendAmountCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-amount-cell";
-import { DividendDateCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-date-cell";
-import { DividendTypeCell } from "../../../../dividends/features/dividend-list/components/cells/dividend-type-cell";
+import { GetDividendDetailItem } from "../../../api/dividend-list/get-dividend-detail-item";
+import { DividendAmountCell } from "../components/cells/dividend-amount-cell";
+import { DividendDateCell } from "../components/cells/dividend-date-cell";
+import { DividendTypeCell } from "../components/cells/dividend-type-cell";
 
-export function useDividendsListColumns() {
+export function useDividendsDetailListColumns() {
   return useMemo(
     () =>
       [
@@ -40,7 +40,7 @@ export function useDividendsListColumns() {
           },
           component: DividendAmountCell,
         },
-      ] as Column<GetDividendListItem, string, string>[],
+      ] as Column<GetDividendDetailItem, string, string, unknown>[],
     [],
   );
 }

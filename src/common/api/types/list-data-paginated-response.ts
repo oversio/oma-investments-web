@@ -1,8 +1,10 @@
 import { z, ZodType, ZodTypeDef } from "zod";
 
+import { listOf } from "./list-of";
+
 export function apiListDataWithPagination<T, A, D extends ZodTypeDef = ZodTypeDef>(item: ZodType<T, D, A>) {
   return z.object({
-    data: z.array(item),
+    data: listOf(item),
     pagination: z.object({
       page: z.number(),
       size: z.number(),
@@ -10,10 +12,6 @@ export function apiListDataWithPagination<T, A, D extends ZodTypeDef = ZodTypeDe
     }),
   });
 }
-
-export type ApiListDataPaginatedResponse<T, A, D extends ZodTypeDef = ZodTypeDef> = z.infer<
-  ReturnType<typeof apiListDataWithPagination<T, A, D>>
->;
 
 export type ListDataPaginatedResponse<T, A, D extends ZodTypeDef = ZodTypeDef> = z.infer<
   ReturnType<typeof apiListDataWithPagination<T, A, D>>

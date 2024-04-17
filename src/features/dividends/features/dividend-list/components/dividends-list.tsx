@@ -2,8 +2,8 @@ import { useSearchParams } from "react-router-dom";
 
 import { DataTable } from "../../../../../common/components/table/data-table/data-table";
 import { ID } from "../../../../../common/types";
-import { useDividendsListColumns } from "../../../../companies/features/company-details/hooks/use-dividends-list-columns";
 import { useGetDividendList } from "../../../api/dividend-list/use-get-dividend-list";
+import { useDividendsListColumns } from "../hooks/use-dividends-list-columns";
 
 interface DividendsListProps {
   companyId: ID | undefined;
