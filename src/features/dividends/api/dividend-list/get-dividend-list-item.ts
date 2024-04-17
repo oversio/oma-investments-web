@@ -1,34 +1,23 @@
 import { z } from "zod";
 
-import { DateTime } from "../../../../common/types";
+import { GetDividendDetailItem } from "./get-dividend-detail-item";
 
 export const ApiGetDividendListItem = z.object({
-  _id: z.string(),
-  date: DateTime,
-  amount: z.number(),
-  type: z.object({
-    _id: z.string(),
-    name: z.string(),
-  }),
-  user: z.object({
-    _id: z.string(),
-    fullName: z.string(),
-  }),
+  year: z.number(),
+  total: z.number(),
+  details: z.array(GetDividendDetailItem),
 });
 
 export type ApiGetDividendListItem = z.infer<typeof ApiGetDividendListItem>;
 
 export function getDividendListItemTransformer<T extends z.infer<typeof ApiGetDividendListItem>>({
-  _id,
-  type,
-  user,
+  details,
   ...data
 }: T) {
   return {
+    id: data.year.toString(),
     ...data,
-    id: _id,
-    type: { name: type.name, id: type._id },
-    user: { name: user.fullName, id: user._id },
+    dividends: details,
   };
 }
 

@@ -1,9 +1,9 @@
 import { Skeleton } from "../../../../../../common/components/skeleton/skeleton";
 import { useTranslate } from "../../../../../../common/i18n/hooks/use-translate";
 import { isTranslationKey } from "../../../../../../common/i18n/utils/is-translation-key";
-import { DividenListCellProps } from "../../types";
+import { DividendDetailListCellProps } from "../../types";
 
-export function DividendTypeCell({ type, isLoading }: DividenListCellProps) {
+export function DividendTypeCell({ type, isLoading }: DividendDetailListCellProps) {
   const t = useTranslate();
 
   if (isLoading) return <Skeleton className=" w-14 h-4" />;
