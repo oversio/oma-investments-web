@@ -6,14 +6,16 @@ import { useNavigate } from "react-router";
 import { Button } from "../../../../common/components/button/button";
 import { Dropdown, DropdownItemProps } from "../../../../common/components/dropdown/dropdown";
 import { ID } from "../../../../common/types";
+import { classMerge } from "../../../../common/utils/class-merge";
 import { UploadDividendModal } from "../upload-dividends/components/upload-dividends-modal";
 import { DividendsList } from "./components/dividends-list";
 
 interface DividendListSectionProps {
   companyId: ID | undefined;
+  className?: string;
 }
 
-export function DividendListSection({ companyId }: DividendListSectionProps) {
+export function DividendListSection({ companyId, className }: DividendListSectionProps) {
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
 
@@ -35,7 +37,7 @@ export function DividendListSection({ companyId }: DividendListSectionProps) {
   }, [navigate]);
 
   return (
-    <section className="flex flex-col gap-3">
+    <section className={classMerge("flex flex-col gap-3", className)}>
       <div className="flex justify-between items-center">
         <h3 className=" text-2xl mb-2">Dividendos pagados</h3>
         <Dropdown name="Add dividend menu" items={items}>

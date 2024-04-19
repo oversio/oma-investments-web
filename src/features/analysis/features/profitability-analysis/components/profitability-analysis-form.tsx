@@ -1,0 +1,76 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Card, CardBody } from "@nextui-org/react";
+import { FormProvider, useForm } from "react-hook-form";
+
+import { Button } from "../../../../../common/components/button/button";
+import { FormInput } from "../../../../../common/components/form/form-input/form-input";
+import { FormSelect } from "../../../../../common/components/form/form-select/form-select";
+import {
+  MAX_BASED_YEARS_ON,
+  MIN_BASED_YEARS_ON,
+  ProfitabilityAnalysisFormSchema,
+} from "./profitability-analysis-form-schema";
+
+interface ProfitabilityAnalysisFormProps {
+  onSubmit: (data: ProfitabilityAnalysisFormSchema) => Promise<void> | void;
+}
+
+export function ProfitabilityAnalysisForm({ onSubmit }: ProfitabilityAnalysisFormProps) {
+  const form = useForm<ProfitabilityAnalysisFormSchema>({
+    defaultValues: {
+      desiredProfitability: 0,
+      basedYearsOn: 5,
+      currentPrice: 0,
+      includeCurrentYear: false,
+    },
+    resolver: zodResolver(ProfitabilityAnalysisFormSchema),
+  });
+
+  return (
+    <Card>
+      <CardBody>
+        <FormProvider {...form}>
+          <form
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="grid grid-cols-24 gap-3"
+          >
+            <FormInput
+              className="col-span-full md:col-span-8"
+              name="desiredProfitability"
+              label="Rentabilidad deseada (%)"
+              type="number"
+              placeholder="Ingresa rentabilidad"
+            />
+            <div className="col-span-12 md:col-span-8">
+              <FormSelect
+                dataType="number"
+                name="basedYearsOn"
+                label="Años a considerar"
+                placeholder="Cantidad de años"
+                options={Array.from({ length: MAX_BASED_YEARS_ON })
+                  .map((_, index) => ({
+                    value: (index + 1).toString(),
+                    label: `${index + 1} año${index === 0 ? "" : "s"}`,
+                  }))
+                  .filter(({ value }) => parseInt(value) >= MIN_BASED_YEARS_ON)}
+              />
+            </div>
+            <FormInput
+              className="col-span-12 md:col-span-8"
+              name="currentPrice"
+              label="Precio actual"
+              type="number"
+              placeholder="Ingresa precio actual"
+            />
+            <div className="col-span-full flex items-center justify-end">
+              <Button type="submit" color="primary" isLoading={form.formState.isSubmitting}>
+                Calcular
+              </Button>
+            </div>
+          </form>
+        </FormProvider>
+      </CardBody>
+    </Card>
+  );
+}

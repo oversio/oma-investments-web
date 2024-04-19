@@ -3,10 +3,11 @@ import { useController } from "react-hook-form";
 
 import { classMerge } from "../../../utils/class-merge";
 
-type FormInputProps = InputProps & {
+type FormInputProps = Omit<InputProps, "onChange"> & {
   name: string;
   label?: string;
   helperText?: string;
+  onChange?: (value: string | number) => void;
 };
 
 export function FormInput({ name, helperText, className, onChange, ...props }: FormInputProps) {
@@ -25,8 +26,9 @@ export function FormInput({ name, helperText, className, onChange, ...props }: F
       isInvalid={Boolean(error)}
       errorMessage={error?.message}
       onChange={e => {
-        field.onChange(e);
-        onChange?.(e);
+        const value = props.type === "number" ? parseFloat(e.target.value) : e.target.value;
+        field.onChange(value);
+        onChange?.(value);
       }}
     />
   );

@@ -10,6 +10,9 @@ export const ApiEntryPoint = {
     dividendList: "/company/:id/dividends",
     uploadDividend: "/company/:id/dividends/upload",
   },
+  analysis: {
+    generateProfitability: "/analysis/profitability/calculate",
+  },
   settings: {
     companyTypes: "/settings/company-types",
     dividendTypes: "/settings/dividend-types",
