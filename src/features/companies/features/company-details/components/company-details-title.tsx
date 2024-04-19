@@ -7,9 +7,10 @@ import { useGetCompany } from "../../../api/get-company/use-get-company";
 
 interface CompanyDetailsTitleProps {
   companyId?: string;
+  hideDescription?: boolean;
 }
 
-export function CompanyDetailsTitle({ companyId }: CompanyDetailsTitleProps) {
+export function CompanyDetailsTitle({ companyId, hideDescription }: CompanyDetailsTitleProps) {
   const { data, isLoading, isError } = useGetCompany(companyId);
 
   return (
@@ -28,15 +29,19 @@ export function CompanyDetailsTitle({ companyId }: CompanyDetailsTitleProps) {
         </h1>
       </div>
 
-      <h3 className="text-lg font-semibold">Descripción</h3>
-      {isLoading || isError ? (
-        <div className=" flex flex-col gap-1 mb-[31px]">
-          <Skeleton className=" w-full h-5" />
-          <Skeleton className=" w-4/5 h-5" />
-          <Skeleton className=" w-3/5 h-5" />
-        </div>
-      ) : (
-        <p className="mb-7 max-w-screen-sm">{data?.description}</p>
+      {!hideDescription && (
+        <>
+          <h3 className="text-lg font-semibold">Descripción</h3>
+          {isLoading || isError ? (
+            <div className=" flex flex-col gap-1 mb-[31px]">
+              <Skeleton className=" w-full h-5" />
+              <Skeleton className=" w-4/5 h-5" />
+              <Skeleton className=" w-3/5 h-5" />
+            </div>
+          ) : (
+            <p className="mb-7 max-w-screen-sm">{data?.description}</p>
+          )}
+        </>
       )}
     </div>
   );

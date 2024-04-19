@@ -1,3 +1,5 @@
+import { Outlet } from "react-router";
+
 import { Navbar } from "../navbar/navbar";
 
 interface LayoutProps {
@@ -8,7 +10,7 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <main className="flex-1 p-4">{children}</main>
+      <main className="flex-1 p-4">{children ?? <Outlet />}</main>
     </div>
   );
 }

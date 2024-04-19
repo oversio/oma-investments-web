@@ -22,7 +22,7 @@ export function AddDividendPanel() {
   const form = useForm<AddDividendSchema>({
     defaultValues: {
       date: "",
-      amount: "0",
+      amount: 0,
     },
     resolver: zodResolver(AddDividendSchema),
   });

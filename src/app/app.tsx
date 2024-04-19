@@ -3,10 +3,12 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import { queryClient } from "../common/api/generate-query-client";
+import { Layout } from "../common/components/layout/layout";
 import { ProtectedRoute } from "../common/components/protected-route/protected-route";
 import { ToastContainer } from "../common/components/toast/components/toast-container";
 import { I18nProvider } from "../common/i18n/i18n-provider";
 import { AuthContextProvider } from "../context/context-provider";
+import { ProfitabilityAnalysisPage } from "../features/analysis/features/profitability-analysis/profitability-analysis-page";
 import { LoginPage } from "../features/auth/login-page";
 import { CompanyListPage } from "../features/companies/features/companies-list/company-list-page";
 import { CompanyDetailsPage } from "../features/companies/features/company-details/company-details-page";
@@ -39,8 +41,13 @@ export function App() {
                       <Route path="" element={<CompanyListPage />}>
                         <Route path="create" element={<CreateCompanyPanel />} />
                       </Route>
-                      <Route path=":id" element={<CompanyDetailsPage />}>
-                        <Route path="add-dividend" element={<AddDividendPanel />} />
+                      <Route path=":id" element={<Layout />}>
+                        <Route path="" element={<CompanyDetailsPage />}>
+                          <Route path="add-dividend" element={<AddDividendPanel />} />
+                        </Route>
+                        <Route path="rentability" element={<ProfitabilityAnalysisPage />}>
+                          <Route path="add-dividend" element={<AddDividendPanel />} />
+                        </Route>
                       </Route>
                     </Route>
                     <Route path="settings" element={<SettingsPage />} />
