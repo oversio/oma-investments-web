@@ -9,12 +9,12 @@ interface DividendsListProps {
   companyId: ID | undefined;
 }
 
-const DEFAULT_PAGE_SIZE = 20;
+export const DEFAULT_DIVIDEND_LIST_PAGE_SIZE = 20;
 
 export function DividendsList({ companyId }: DividendsListProps) {
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get("page") ?? 1);
-  const size = Number(searchParams.get("size") ?? DEFAULT_PAGE_SIZE);
+  const size = Number(searchParams.get("size") ?? DEFAULT_DIVIDEND_LIST_PAGE_SIZE);
   const { data, isLoading, isError } = useGetDividendList(companyId, page, size);
   const columns = useDividendsListColumns();
 

@@ -1,11 +1,11 @@
 import { faChartMixedUpCircleDollar, faHandsHoldingDollar } from "@fortawesome/pro-light-svg-icons";
 import { useMemo } from "react";
 
-import { ArrowDownIcon } from "../../../../common/components/icons/arrow-down-icon";
-import { ArrowUpIcon } from "../../../../common/components/icons/arrow-up-icon";
-import { IndicatorWidgetProps } from "../../../../common/components/widget/indicator-widget";
-import { CalculateProfitability } from "../../api/calculate-profitability/calculate-profitability";
-import { ProfitabilityAnalysisFormSchema } from "../profitability-analysis/components/profitability-analysis-form-schema";
+import { ArrowDownIcon } from "../../../common/components/icons/arrow-down-icon";
+import { ArrowUpIcon } from "../../../common/components/icons/arrow-up-icon";
+import { IndicatorWidgetProps } from "../../../common/components/widget/indicator-widget";
+import { CalculateProfitability } from "../api/calculate-profitability/calculate-profitability";
+import { ProfitabilityAnalysisFormSchema } from "../features/profitability-analysis/components/profitability-analysis-form-schema";
 
 interface IndicatorDataProps {
   params: ProfitabilityAnalysisFormSchema | undefined;
