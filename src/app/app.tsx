@@ -9,7 +9,6 @@ import { ToastContainer } from "../common/components/toast/components/toast-cont
 import { I18nProvider } from "../common/i18n/i18n-provider";
 import { ReactQueryDevTool } from "../common/react-query-dev-tool";
 import { AuthContextProvider } from "../context/context-provider";
-import { ProfitabilityAnalysisPage } from "../features/analysis/features/profitability-analysis/profitability-analysis-page";
 import { LoginPage } from "../features/auth/login-page";
 import { CompanyListPage } from "../features/companies/features/companies-list/company-list-page";
 import { CompanyDetailsPage } from "../features/companies/features/company-details/company-details-page";
@@ -44,9 +43,6 @@ export function App() {
                       </Route>
                       <Route path=":id" element={<Layout />}>
                         <Route path="" element={<CompanyDetailsPage />}>
-                          <Route path="add-dividend" element={<AddDividendPanel />} />
-                        </Route>
-                        <Route path="rentability" element={<ProfitabilityAnalysisPage />}>
                           <Route path="add-dividend" element={<AddDividendPanel />} />
                         </Route>
                       </Route>
