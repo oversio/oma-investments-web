@@ -5,15 +5,15 @@ import { ArrowDownIcon } from "../../../common/components/icons/arrow-down-icon"
 import { ArrowUpIcon } from "../../../common/components/icons/arrow-up-icon";
 import { IndicatorWidgetProps } from "../../../common/components/widget/indicator-widget";
 import { CalculateProfitability } from "../api/calculate-profitability/calculate-profitability";
-import { ProfitabilityAnalysisFormSchema } from "../features/profitability-analysis/components/profitability-analysis-form-schema";
+import { ProfitabilityAnalysisFormSchema } from "../features/profitability-analysis/form-schemas/profitability-analysis-form-schema";
 
-interface IndicatorDataProps {
+export interface IndicatorDataProps {
   params: ProfitabilityAnalysisFormSchema | undefined;
   data: CalculateProfitability | undefined;
   isLoading: boolean;
 }
 
-export function useIndicatorData({ params, data, isLoading }: IndicatorDataProps) {
+export function useProfitabilityIndicatorData({ params, data, isLoading }: IndicatorDataProps) {
   return useMemo<IndicatorWidgetProps[]>(() => {
     if (!data && !isLoading) return [];
 

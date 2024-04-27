@@ -53,13 +53,14 @@ export function IndicatorWidget({
               <FontAwesomeIcon icon={icon} className="text-2xl" />
             </div>
           </div>
-          <div className="flex flex-col items-center col-span-13">
+          <div className="flex flex-col items-center col-span-17">
             <p className="text-sm text-gray-500">{title}</p>
-            <p className={classMerge("text-lg font-semibold", `text-${color}`)}>{value}</p>
+
+            <div className="flex items-center gap-2">
+              <p className={classMerge("text-lg font-semibold", `text-${color}`)}>{value}</p>
+              {endContent ? <span>{endContent}</span> : null}
+            </div>
           </div>
-          {endContent ? (
-            <div className="flex justify-center items-center col-span-4">{endContent}</div>
-          ) : null}
         </div>
       </CardBody>
     </Card>

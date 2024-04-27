@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 
+import { classMerge } from "../../utils/class-merge";
 import { CustomTooltip } from "./custom-tooltip";
 
 export type SimpleLineChartDataProps = {
@@ -30,12 +31,24 @@ interface SimpleLineChartProps {
   data: SimpleLineChartDataProps[];
   lineProps?: Array<SimpleLineProps>;
   hideLegend?: boolean;
+  aspectRatio?: `${number}/${number}`;
 }
 
-export function SimpleLineChart({ className, data, lineProps, hideLegend }: SimpleLineChartProps) {
+export function SimpleLineChart({
+  className,
+  data,
+  lineProps,
+  hideLegend,
+  aspectRatio,
+}: SimpleLineChartProps) {
   return (
     <Card title={"Simple Line Chart"} className={className}>
-      <CardBody className="mt-5 aspect-[1060/660] w-full lg:mt-7">
+      <CardBody
+        className={classMerge(
+          "mt-5 aspect-[1060/660] w-full lg:mt-7",
+          aspectRatio ? `aspect-[${aspectRatio}]` : "",
+        )}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={getData(data)}

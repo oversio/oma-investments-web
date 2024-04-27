@@ -6,12 +6,14 @@ import { classMerge } from "../../../../common/utils/class-merge";
 import { CompanyDetailsTitle } from "../../../companies/features/company-details/components/company-details-title";
 import { useGetDividendList } from "../../../dividends/api/dividend-list/use-get-dividend-list";
 import { DividendYearChart } from "../../../dividends/components/dividend-year-chart";
-import { DEFAULT_DIVIDEND_LIST_PAGE_SIZE } from "../../../dividends/features/dividend-list/components/dividends-list";
-import { DividendListSection } from "../../../dividends/features/dividend-list/dividend-list-section";
+import {
+  DEFAULT_DIVIDEND_LIST_PAGE_SIZE,
+  DividendListSection,
+} from "../../../dividends/features/dividend-list/dividend-list-section";
 import { useCalculateProfitability } from "../../api/calculate-profitability/use-calculate-profitability";
-import { useIndicatorData } from "../../hooks/use-indicator-data";
-import { ProfitabilityAnalysisForm } from "./components/profitability-analysis-form";
-import { ProfitabilityAnalysisFormSchema } from "./components/profitability-analysis-form-schema";
+import { useProfitabilityIndicatorData } from "../../hooks/use-profitability-indicator-data";
+import { AnalysisProfitabilityForm } from "./components/analysis-profitability-form";
+import { ProfitabilityAnalysisFormSchema } from "./form-schemas/profitability-analysis-form-schema";
 
 export function ProfitabilityAnalysisPage() {
   const id = useParams().id ?? "";
@@ -31,7 +33,7 @@ export function ProfitabilityAnalysisPage() {
     });
   };
 
-  const indicators = useIndicatorData({ params, data, isLoading: isPending || isError });
+  const indicators = useProfitabilityIndicatorData({ params, data, isLoading: isPending || isError });
 
   return (
     <>
@@ -40,6 +42,7 @@ export function ProfitabilityAnalysisPage() {
         <h3 className=" text-xl mb-5">Análisis de rentabilidad</h3>
         <div className="flex-1">
           <div className="grid grid-cols-24 gap-y-5 lg:gap-5">
+            {/* Left section */}
             <div className="flex flex-col col-span-full xl:col-span-6 gap-5">
               <div className="grid grid-cols-24 lg:gap-5 xl:gap-0 xl:gap-y-5">
                 <DividendListSection
@@ -47,17 +50,15 @@ export function ProfitabilityAnalysisPage() {
                   className=" col-span-full lg:col-span-12 xl:col-span-full"
                 />
                 <div className="col-span-full lg:col-span-12 xl:col-span-full mt-5 lg:mt-0">
-                  <DividendYearChart
-                    isLoading={isLoadingDividend}
-                    title="Histórico de dividendos"
-                    data={dividendYearList ?? []}
-                  />
+                  Historico de resultados
                 </div>
               </div>
             </div>
+
+            {/* Center */}
             <div className="col-span-full xl:col-span-12">
               <h3 className=" text-2xl mb-5">Calcular rentabilidad</h3>
-              <ProfitabilityAnalysisForm onSubmit={onSubmitCalculateProfitability} />
+              <AnalysisProfitabilityForm onSubmit={onSubmitCalculateProfitability} />
               <div className="grid grid-cols-24 mt-5 gap-y-3 md:gap-x-3">
                 {indicators.length ? (
                   <Fragment>
@@ -89,6 +90,15 @@ export function ProfitabilityAnalysisPage() {
                   </div>
                 )}
               </div>
+            </div>
+
+            {/* Right section */}
+            <div className="col-span-full xl:col-span-6 mt-5 lg:mt-0">
+              <DividendYearChart
+                isLoading={isLoadingDividend}
+                title="Histórico de dividendos"
+                data={dividendYearList ?? []}
+              />
             </div>
           </div>
         </div>

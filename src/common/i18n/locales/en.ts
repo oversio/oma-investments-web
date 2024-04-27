@@ -22,7 +22,25 @@ export const en = {
   "config.dividend-types.additional.description": "Additional description",
   "config.dividend-types.eventual.name": "Eventual",
   "config.dividend-types.eventual.description": "Eventual description",
+  // Analysis - Profitability
+  "analysis.profitability.title": "Análisis de Rentabilidad",
+  "analysis.profitability.results.title": "Resultados del análisis",
+  "analysis.profitability.results.no-results": "No hay resultados para mostrar",
 
+  // Analysis - Profitability results
+  "analysis.profitability.results.observations.title": "Observaciones",
+  "analysis.profitability.results.every-year.title": "Según frecuencia de pagos:",
+  "analysis.profitability.results.every-year.true": "Es una acción dividendera!",
+  "analysis.profitability.results.every-year.false": "Existen años que no pagó dividendos",
+  "analysis.profitability.results.good-dividend.title": "Según porcentaje de ganancia:",
+  "analysis.profitability.results.good-dividend.-1": "Cuidado! No paga buenos dividendos",
+  "analysis.profitability.results.good-dividend.0": "Es una acción bastante atractiva",
+  "analysis.profitability.results.good-dividend.1": "Es una excelente acción!",
+  "analysis.profitability.results.rising-dividends.title": "Tendencia de los dividendos:",
+  "analysis.profitability.results.rising-dividends.-1": "Cuidado! los dividendos van en bajada",
+  "analysis.profitability.results.rising-dividends.0":
+    "Los dividendos crecen lentamente o no están creciendo",
+  "analysis.profitability.results.rising-dividends.1": "Los dividendos crecen a buen ritmo!",
   // Actions
   "actions.see-more": "({count}) more",
   "actions.see-less": "See less",

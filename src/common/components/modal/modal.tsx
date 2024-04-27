@@ -45,6 +45,7 @@ export function Modal({
       placement={placement}
       size={size}
       backdrop={backdrop}
+      scrollBehavior="inside"
     >
       <ModalContent>
         {closeModal => (
@@ -53,14 +54,12 @@ export function Modal({
 
             <ModalBody>{children}</ModalBody>
 
-            {cancelButton || confirmButton ? (
-              <ModalFooter
-                onClose={closeModal}
-                isLoading={isLoading}
-                cancelButton={cancelButton}
-                confirmButton={confirmButton}
-              />
-            ) : null}
+            <ModalFooter
+              onClose={closeModal}
+              isLoading={isLoading}
+              cancelButton={cancelButton}
+              confirmButton={confirmButton}
+            />
           </>
         )}
       </ModalContent>
