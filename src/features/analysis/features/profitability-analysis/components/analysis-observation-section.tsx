@@ -7,7 +7,7 @@ import { GoodLevelResult } from "../../../types";
 import { AnalysisObservationItem, AnalysisObservationItemProps } from "./analysis-observation-item";
 
 interface AnalysisObservationSectionProps {
-  data: CalculateProfitability | undefined;
+  data: CalculateProfitability["results"] | undefined;
   isLoading?: boolean;
 }
 

@@ -9,22 +9,22 @@ import { ProfitabilityAnalysisFormSchema } from "../features/profitability-analy
 
 export interface IndicatorDataProps {
   params: ProfitabilityAnalysisFormSchema | undefined;
-  data: CalculateProfitability | undefined;
+  results: CalculateProfitability["results"] | undefined;
   isLoading: boolean;
 }
 
-export function useProfitabilityIndicatorData({ params, data, isLoading }: IndicatorDataProps) {
+export function useProfitabilityIndicatorData({ params, results, isLoading }: IndicatorDataProps) {
   return useMemo<IndicatorWidgetProps[]>(() => {
-    if (!data && !isLoading) return [];
+    if (!results && !isLoading) return [];
 
-    const isProfitabilityUp = (params?.desiredProfitability ?? 0) <= (data?.averageDividendYield ?? 0);
-    const isIdealPriceUp = (params?.currentPrice ?? 0) <= (data?.idealPrice ?? 0);
-    const isMinYieldUp = (params?.desiredProfitability ?? 0) <= (data?.minDividendYield ?? 0);
+    const isProfitabilityUp = (params?.desiredProfitability ?? 0) <= (results?.averageDividendYield ?? 0);
+    const isIdealPriceUp = (params?.currentPrice ?? 0) <= (results?.idealPrice ?? 0);
+    const isMinYieldUp = (params?.desiredProfitability ?? 0) <= (results?.minDividendYield ?? 0);
     return [
       {
         key: "profitability",
         title: "Rentabilidad (Yield)",
-        value: `${data?.averageDividendYield ?? 0}%`,
+        value: `${results?.averageDividendYield ?? 0}%`,
         color: isProfitabilityUp ? "success" : "warning",
         icon: faChartMixedUpCircleDollar,
         isLoading,
@@ -37,15 +37,15 @@ export function useProfitabilityIndicatorData({ params, data, isLoading }: Indic
       {
         key: "min-yield",
         title: "Min. Yield",
-        value: `${data?.minDividendYield ?? 0}%`,
-        color: (data?.minDividendYield ?? 0) === 0 ? "warning" : isMinYieldUp ? "success" : "default",
+        value: `${results?.minDividendYield ?? 0}%`,
+        color: (results?.minDividendYield ?? 0) === 0 ? "warning" : isMinYieldUp ? "success" : "default",
         icon: faChartMixedUpCircleDollar,
         isLoading,
       },
       {
         key: "ideal-price",
         title: "Precio ideal",
-        value: `$${data?.idealPrice ?? 0}`,
+        value: `$${results?.idealPrice ?? 0}`,
         color: isIdealPriceUp ? "success" : "warning",
         icon: faHandsHoldingDollar,
         isLoading,
@@ -56,5 +56,12 @@ export function useProfitabilityIndicatorData({ params, data, isLoading }: Indic
         ),
       },
     ];
-  }, [data, isLoading, params]);
+  }, [
+    isLoading,
+    params?.currentPrice,
+    params?.desiredProfitability,
+    results?.averageDividendYield,
+    results?.idealPrice,
+    results?.minDividendYield,
+  ]);
 }

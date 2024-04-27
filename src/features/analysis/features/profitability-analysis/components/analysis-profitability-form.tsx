@@ -69,6 +69,7 @@ export function AnalysisProfitabilityForm({ onSubmit }: ProfitabilityAnalysisFor
             variant="flat"
             startContent={<FontAwesomeIcon icon={faChartMixedUpCircleCurrency} />}
             isLoading={form.formState.isSubmitting}
+            fullWidth
           >
             Calcular
           </Button>
