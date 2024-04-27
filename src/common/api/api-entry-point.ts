@@ -11,8 +11,9 @@ export const ApiEntryPoint = {
     uploadDividend: "/company/:id/dividends/upload",
   },
   analysis: {
+    profitabilityResultsList: "/analysis/profitability",
+    saveProfitability: "/analysis/profitability",
     generateProfitability: "/analysis/profitability/calculate",
-    saveProfitability: "/analysis/profitability/save",
   },
   settings: {
     companyTypes: "/settings/company-types",

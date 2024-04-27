@@ -45,16 +45,7 @@ export function AnalysisProfitabilityModal({ companyId = "", onClose }: Analysis
   const handleSaveProfitabilityResults = async () => {
     await saveProfitabilityResults({
       companyId,
-      minDividendPaid: data?.minDividendPaid ?? 0,
-      totalDividendPaid: data?.totalDividendPaid ?? 0,
-      averageDividendPaid: data?.averageDividendPaid ?? 0,
-      averageDividendYield: data?.averageDividendYield ?? 0,
-      minDividendYield: data?.minDividendYield ?? 0,
-      slope: data?.slope ?? 0,
-      risingDividend: data?.risingDividend ?? 0,
-      idealPrice: data?.idealPrice ?? 0,
-      dividendEveryYear: data?.dividendEveryYear ?? false,
-      goodDividend: data?.goodDividend ?? 0,
+      results: data?.results ?? ({} as CalculateProfitability["results"]),
       years: data?.years ?? [],
       params: data?.params ?? ({} as CalculateProfitability["params"]),
     });
@@ -84,7 +75,8 @@ export function AnalysisProfitabilityModal({ companyId = "", onClose }: Analysis
       {/* Results */}
       <AnalysisProfitabilityResults
         params={params}
-        data={data}
+        results={data?.results}
+        years={data?.years}
         isLoading={!companyId || isPending || isError}
       />
     </Modal>

@@ -31,12 +31,14 @@ export function calculateProfitabilityTransformer<T extends z.infer<typeof ApiCa
 ) {
   const { min, total, average, avgYield, minYield, ...rest } = data.results;
   return {
-    ...rest,
-    minDividendPaid: min,
-    totalDividendPaid: total,
-    averageDividendPaid: average,
-    averageDividendYield: avgYield,
-    minDividendYield: minYield,
+    results: {
+      ...rest,
+      minDividendPaid: min,
+      totalDividendPaid: total,
+      averageDividendPaid: average,
+      averageDividendYield: avgYield,
+      minDividendYield: minYield,
+    },
     years: data.years.map(year => ({
       year: year._id,
       total: year.total,

@@ -9,10 +9,17 @@ import {
 } from "../../../hooks/use-profitability-indicator-data";
 import { AnalysisObservationSection } from "./analysis-observation-section";
 
-interface AnalysisProfitabilityResultsProps extends IndicatorDataProps {}
+interface AnalysisProfitabilityResultsProps extends IndicatorDataProps {
+  years: Array<{ year: number; total: number }> | undefined;
+}
 
-export function AnalysisProfitabilityResults({ params, data, isLoading }: AnalysisProfitabilityResultsProps) {
-  const indicators = useProfitabilityIndicatorData({ params, data, isLoading });
+export function AnalysisProfitabilityResults({
+  params,
+  results,
+  years,
+  isLoading,
+}: AnalysisProfitabilityResultsProps) {
+  const indicators = useProfitabilityIndicatorData({ params, results, isLoading });
 
   return (
     <div className="grid grid-cols-24 mt-5 gap-y-3 md:gap-x-3">
@@ -32,11 +39,11 @@ export function AnalysisProfitabilityResults({ params, data, isLoading }: Analys
             />
           ))}
 
-          <AnalysisObservationSection data={data} isLoading={isLoading} />
+          <AnalysisObservationSection data={results} isLoading={isLoading} />
 
           <div className="col-span-full mt-4">
             <DividendYearChart
-              data={data?.years ?? []}
+              data={years ?? []}
               legend="Dividendos"
               title="Años considerados en el análisis"
               isLoading={isLoading}

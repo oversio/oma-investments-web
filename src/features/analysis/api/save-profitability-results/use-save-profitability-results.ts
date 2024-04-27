@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { ApiEntryPoint } from "../../../../common/api/api-entry-point";
 import { fetcher } from "../../../../common/api/fetcher";
@@ -14,6 +14,8 @@ import {
 } from "./save-profitability-results-input";
 
 export function useSaveProfitabilityResults(id: ID | undefined) {
+  const queryClient = useQueryClient();
+
   const result = useMutation<
     SaveProfitabilityResults,
     MutationError<SaveProfitabilityResultsInput>,
@@ -27,6 +29,11 @@ export function useSaveProfitabilityResults(id: ID | undefined) {
         SaveProfitabilityResults,
         saveProfitabilityResultsInputTransformer(input),
       ),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: [CompanyQueryKey.Details, id, AnalysisQueryKey.ProfitabilityResultsList],
+      });
+    },
   });
 
   const { mutateAsync, ...rest } = result;

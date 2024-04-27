@@ -50,7 +50,7 @@ export function ProfitabilityAnalysisPage() {
                   className=" col-span-full lg:col-span-12 xl:col-span-full"
                 />
                 <div className="col-span-full lg:col-span-12 xl:col-span-full mt-5 lg:mt-0">
-                  Historico de resultados
+                  Histórico de resultados
                 </div>
               </div>
             </div>
