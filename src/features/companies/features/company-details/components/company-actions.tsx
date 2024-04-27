@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Tooltip } from "@nextui-org/react";
 
 import { Button } from "../../../../../common/components/button/button";
-import { Link } from "../../../../../common/components/link/link";
 
-export function CompanyActions() {
+export type CompanyActionType = "edit" | "delete" | "profitability";
+interface CompanyActionsProps {
+  onActionClick?: (action: CompanyActionType) => void;
+}
+
+export function CompanyActions({ onActionClick }: CompanyActionsProps) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex justify-end gap-3">
@@ -22,15 +26,15 @@ export function CompanyActions() {
         </Tooltip>
       </div>
       <div className="flex gap-3">
-        <Tooltip content="Analizar rentabilidad">
-          <Link
+        <Tooltip content="Realizar análisis rentabilidad" placement="bottom">
+          <Button
+            color="primary"
             variant="flat"
-            color="secondary"
-            to="rentability"
             startContent={<FontAwesomeIcon icon={faMoneyBillTrendUp} />}
+            onPress={() => onActionClick?.("profitability")}
           >
             Rentabilidad
-          </Link>
+          </Button>
         </Tooltip>
       </div>
     </div>

@@ -36,14 +36,14 @@ export function IndicatorWidget({
   isLoading,
 }: IndicatorWidgetProps) {
   if (isLoading) {
-    return <Skeleton className={classMerge(" w-full rounded-xl h-[72px]", className)} />;
+    return <Skeleton className={classMerge(" w-full rounded-xl h-full", className)} />;
   }
 
   return (
     <Card className={className}>
       <CardBody>
         <div className="grid grid-cols-24 place-items-center h-full">
-          <div className=" col-span-8">
+          <div className=" col-span-7">
             <div
               className={classMerge(
                 "flex items-center justify-center w-12 h-12 bg-default/40 text-default-foreground rounded-lg",
@@ -53,13 +53,14 @@ export function IndicatorWidget({
               <FontAwesomeIcon icon={icon} className="text-2xl" />
             </div>
           </div>
-          <div className="flex flex-col items-center col-span-12">
+          <div className="flex flex-col items-center col-span-17">
             <p className="text-sm text-gray-500">{title}</p>
-            <p className={classMerge("text-lg font-semibold", `text-${color}`)}>{value}</p>
+
+            <div className="flex items-center gap-2">
+              <p className={classMerge("text-lg font-semibold", `text-${color}`)}>{value}</p>
+              {endContent ? <span>{endContent}</span> : null}
+            </div>
           </div>
-          {endContent ? (
-            <div className="flex justify-center items-center col-span-4">{endContent}</div>
-          ) : null}
         </div>
       </CardBody>
     </Card>

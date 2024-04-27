@@ -18,7 +18,9 @@ interface ModalFormProps<TFieldValues extends FieldValues, TResult> {
   isError?: boolean;
   children?: React.ReactNode;
   submitButtonProps?: ButtonAndLabel;
+  cancelButtonProps?: ButtonAndLabel;
   size?: ModalProps["size"];
+  formClassName?: string;
 }
 
 export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
@@ -30,7 +32,9 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
   isLoading,
   children,
   submitButtonProps,
+  cancelButtonProps,
   size,
+  formClassName,
 }: ModalFormProps<TFieldValues, TResult>) {
   const { isSubmitting } = formProps.formState;
 
@@ -51,8 +55,9 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
       backdrop="blur"
       isKeyboardDismissDisabled={true}
       cancelButton={{
-        label: "Cancelar",
-        disabled: isSubmitting || isLoading,
+        label: cancelButtonProps?.label ?? "Cancelar",
+        isDisabled: isSubmitting || isLoading || cancelButtonProps?.disabled,
+        className: cancelButtonProps?.className,
       }}
       confirmButton={{
         ...submitButtonProps,
@@ -60,7 +65,7 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
         color: "primary",
         type: "submit",
         form: MODAL_FORM_ID,
-        disabled: isSubmitting || submitButtonProps?.disabled,
+        isDisabled: isSubmitting || submitButtonProps?.disabled,
         className: classMerge("min-w-[100px]", submitButtonProps?.className),
         isLoading: isSubmitting || submitButtonProps?.isLoading,
       }}
@@ -70,7 +75,7 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
           id={MODAL_FORM_ID}
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onSubmit={formProps.handleSubmit(handleSubmit)}
-          className=" flex flex-col max-h-full overflow-y-hidden gap-4"
+          className={classMerge(" flex flex-col max-h-full overflow-y-hidden gap-4", formClassName)}
         >
           {children}
         </form>

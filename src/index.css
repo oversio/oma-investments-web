@@ -3,3 +3,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+/* ................................................... */
+/* Recharts Base Styling */
+/* ................................................... */
+.recharts-wrapper .recharts-cartesian-axis-line {
+  @apply stroke-gray-200;
+}
+
+.recharts-wrapper .recharts-cartesian-axis-tick-value {
+  @apply fill-gray-400 text-xs;
+}
+
+.recharts-wrapper .recharts-cartesian-grid line {
+  @apply stroke-gray-300;
+}
+
+.recharts-wrapper .recharts-tooltip-cursor {
+  @apply opacity-20;
+}
+
+.recharts-wrapper .recharts-tooltip-cursor {
+  @apply dark:opacity-10;
+}
+
+.recharts-wrapper .recharts-brush rect:first-child {
+  @apply dark:fill-gray-400/50;
+}

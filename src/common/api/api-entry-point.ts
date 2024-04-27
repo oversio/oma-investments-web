@@ -12,6 +12,7 @@ export const ApiEntryPoint = {
   },
   analysis: {
     generateProfitability: "/analysis/profitability/calculate",
+    saveProfitability: "/analysis/profitability/save",
   },
   settings: {
     companyTypes: "/settings/company-types",

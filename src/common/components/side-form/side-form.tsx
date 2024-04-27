@@ -62,7 +62,7 @@ export function SideForm<TFieldValues extends FieldValues, TResult = unknown>({
       title={title}
       cancelButton={{
         label: "Cancelar",
-        disabled: isSubmitting || isLoading,
+        isDisabled: isSubmitting || isLoading,
       }}
       confirmButton={{
         ...submitButtonProps,
@@ -70,7 +70,7 @@ export function SideForm<TFieldValues extends FieldValues, TResult = unknown>({
         color: "primary",
         type: "submit",
         form: SIDE_FORM_ID,
-        disabled: submitButtonProps?.disabled,
+        isDisabled: submitButtonProps?.disabled,
         className: classMerge("min-w-[100px]", submitButtonProps?.className),
         isLoading: isSubmitting || submitButtonProps?.isLoading,
       }}

@@ -11,11 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/pro-light-svg-icons": "^6.5.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/pro-light-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@hookform/resolvers": "^3.3.4",
-    "@nextui-org/react": "^2.2.9",
+    "@nextui-org/react": "^2.3.5",
     "@tanstack/react-query": "^5.20.5",
     "@tanstack/react-query-devtools": "^5.20.5",
     "axios": "^1.6.7",
@@ -30,8 +30,9 @@
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "react-toastify": "^10.0.4",
-    "tailwind-merge": "^2.2.2",
-    "zod": "^3.22.4"
+    "recharts": "^2.12.5",
+    "tailwind-merge": "^2.3.0",
+    "zod": "^3.22.5"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.20.1",
@@ -50,9 +51,9 @@
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.7"
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10"
   },
   "packageManager": "yarn@4.1.1"
 }

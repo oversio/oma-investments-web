@@ -7,6 +7,7 @@ import { Layout } from "../common/components/layout/layout";
 import { ProtectedRoute } from "../common/components/protected-route/protected-route";
 import { ToastContainer } from "../common/components/toast/components/toast-container";
 import { I18nProvider } from "../common/i18n/i18n-provider";
+import { ReactQueryDevTool } from "../common/react-query-dev-tool";
 import { AuthContextProvider } from "../context/context-provider";
 import { ProfitabilityAnalysisPage } from "../features/analysis/features/profitability-analysis/profitability-analysis-page";
 import { LoginPage } from "../features/auth/login-page";
@@ -58,6 +59,7 @@ export function App() {
             </AuthContextProvider>
           </BrowserRouter>
         </NextUIProvider>
+        <ReactQueryDevTool />
       </QueryClientProvider>
     </I18nProvider>
   );
