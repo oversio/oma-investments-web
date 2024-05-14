@@ -7,19 +7,22 @@ on:
 
 jobs:
   release:
+    name: Release
     permissions:
       contents: write
       issues: write
       pull-requests: write
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "20.x"
-      - run: npm install @semantic-release/git -g && npx semantic-release
+      - run: npm -g install @semantic-release/git semantic-release && semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 
 
