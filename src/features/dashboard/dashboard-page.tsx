@@ -4,7 +4,6 @@ export function DashboardPage() {
   return (
     <Layout>
       <h1>Dashboard page</h1>
-      <p>Text</p>
     </Layout>
   );
 }
