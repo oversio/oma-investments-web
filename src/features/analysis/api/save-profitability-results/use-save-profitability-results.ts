@@ -25,7 +25,7 @@ export function useSaveProfitabilityResults(id: ID | undefined) {
     mutationFn: input =>
       fetcher(
         AxiosMethod.Post,
-        ApiEntryPoint.analysis.saveProfitability,
+        ApiEntryPoint.analysis.profitability.save(id),
         SaveProfitabilityResults,
         saveProfitabilityResultsInputTransformer(input),
       ),

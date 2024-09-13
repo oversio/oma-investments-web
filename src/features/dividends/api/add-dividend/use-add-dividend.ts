@@ -5,7 +5,6 @@ import { fetcher } from "../../../../common/api/fetcher";
 import { DividendQueryKey } from "../../../../common/api/support/dividend-query-key";
 import { AxiosMethod } from "../../../../common/api/types/axios-method";
 import { MutationError } from "../../../../common/api/types/mutation-error";
-import { apiPath } from "../../../../common/api/utils/url";
 import { AddDividend } from "./add-dividend";
 import { AddDividendInput, addDividendTransformer } from "./add-dividend-input";
 
@@ -17,7 +16,7 @@ export function useAddDividend() {
     mutationFn: input =>
       fetcher(
         AxiosMethod.Post,
-        apiPath(ApiEntryPoint.companies.addDividend, { params: { id: input.companyId } }),
+        ApiEntryPoint.companies.dividends.add(input.companyId),
         AddDividend,
         addDividendTransformer(input),
       ),

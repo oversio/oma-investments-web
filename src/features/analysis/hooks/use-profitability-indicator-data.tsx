@@ -56,6 +56,7 @@ export function useProfitabilityIndicatorData({ params, results, isLoading }: In
         ),
       },
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     isLoading,
     params?.currentPrice,

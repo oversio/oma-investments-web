@@ -6,7 +6,6 @@ import { CompanyQueryKey } from "../../../../common/api/support/company-query-ke
 import { DividendQueryKey } from "../../../../common/api/support/dividend-query-key";
 import { AxiosMethod } from "../../../../common/api/types/axios-method";
 import { MutationError } from "../../../../common/api/types/mutation-error";
-import { apiPath } from "../../../../common/api/utils/url";
 import { ID } from "../../../../common/types";
 import { UploadDividendInput, uploadDividendTransformer } from "./upload-dividend-input";
 import { UploadDividends } from "./upload-dividends";
@@ -19,7 +18,7 @@ export function useUploadDividendsFile(companyId: ID | undefined = "") {
     mutationFn: input =>
       fetcher(
         AxiosMethod.Post,
-        apiPath(ApiEntryPoint.companies.uploadDividend, { params: { id: companyId } }),
+        ApiEntryPoint.companies.dividends.upload(companyId),
         UploadDividends,
         uploadDividendTransformer(input),
       ),
