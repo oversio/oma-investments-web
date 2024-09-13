@@ -1,3 +1,5 @@
+import { ID } from "../types";
+
 export const ApiEntryPoint = {
   user: {
     profile: "/users/profile",
@@ -5,15 +7,19 @@ export const ApiEntryPoint = {
   companies: {
     create: "/companies",
     list: "/companies",
-    details: "/companies/:id",
-    addDividend: "/company/:id/dividends",
-    dividendList: "/company/:id/dividends",
-    uploadDividend: "/company/:id/dividends/upload",
+    details: (companyId: ID | undefined) => `/companies/${companyId}`,
+    dividends: {
+      list: (companyId: ID | undefined) => `/companies/${companyId}/dividends`,
+      add: (companyId: ID | undefined) => `/companies/${companyId}/dividends`,
+      upload: (companyId: ID | undefined) => `/companies/${companyId}/dividends/upload`,
+    },
   },
   analysis: {
-    profitabilityResultsList: "/analysis/profitability",
-    saveProfitability: "/analysis/profitability",
-    generateProfitability: "/analysis/profitability/calculate",
+    profitability: {
+      list: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability`,
+      save: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability`,
+      generate: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability/calculate`,
+    },
   },
   settings: {
     companyTypes: "/settings/company-types",

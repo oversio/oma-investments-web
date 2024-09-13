@@ -11,6 +11,6 @@ const replaceParamsInPath = (path: string, params?: QueryParams["params"]) => {
   return params ? path.replace(/:\w+/g, match => params[match.slice(1)] ?? "") : path;
 };
 
-const getQueryString = (query?: QueryParams["query"]) => {
+export const getQueryString = (query?: QueryParams["query"]) => {
   return query ? "?" + new URLSearchParams(query ?? {}).toString() : "";
 };

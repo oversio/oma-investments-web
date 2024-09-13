@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-import { GetDividendDetailItem } from "./get-dividend-detail-item";
+import { ApiGetDividendDetailItem, getDividendDetailItemTransformer } from "./get-dividend-detail-item";
 
 export const ApiGetDividendListItem = z.object({
   year: z.number(),
   total: z.number(),
-  details: z.array(GetDividendDetailItem),
+  details: z.array(ApiGetDividendDetailItem),
 });
 
 export type ApiGetDividendListItem = z.infer<typeof ApiGetDividendListItem>;
@@ -17,7 +17,7 @@ export function getDividendListItemTransformer<T extends z.infer<typeof ApiGetDi
   return {
     id: data.year.toString(),
     ...data,
-    dividends: details,
+    dividends: details.map(getDividendDetailItemTransformer),
   };
 }
 

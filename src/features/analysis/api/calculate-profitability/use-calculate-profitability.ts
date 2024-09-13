@@ -23,7 +23,7 @@ export function useCalculateProfitability(id: ID | undefined) {
     mutationFn: input =>
       fetcher(
         AxiosMethod.Post,
-        ApiEntryPoint.analysis.generateProfitability,
+        ApiEntryPoint.analysis.profitability.generate(id),
         CalculateProfitability,
         calculateProfitabilityInputTransformer(input),
       ),

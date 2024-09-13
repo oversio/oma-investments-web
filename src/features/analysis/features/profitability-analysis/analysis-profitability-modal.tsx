@@ -30,10 +30,7 @@ export function AnalysisProfitabilityModal({ companyId = "", onClose }: Analysis
 
   const handleCalculateProfitability = async (input: ProfitabilityAnalysisFormSchema) => {
     setParams(input);
-    await calculateProfitability({
-      ...input,
-      companyId,
-    });
+    await calculateProfitability(input);
   };
 
   const handleClose = async () => {
