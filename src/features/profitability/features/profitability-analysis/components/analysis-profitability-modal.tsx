@@ -2,14 +2,14 @@ import { faCheck } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
-import { Modal } from "../../../../common/components/modal/modal";
-import { ID } from "../../../../common/types";
-import { CalculateProfitability } from "../../api/calculate-profitability/calculate-profitability";
-import { useCalculateProfitability } from "../../api/calculate-profitability/use-calculate-profitability";
-import { useSaveProfitabilityResults } from "../../api/save-profitability-results/use-save-profitability-results";
-import { AnalysisProfitabilityForm } from "./components/analysis-profitability-form";
-import { AnalysisProfitabilityResults } from "./components/analysis-profitability-results";
-import { ProfitabilityAnalysisFormSchema } from "./form-schemas/profitability-analysis-form-schema";
+import { Modal } from "../../../../../common/components/modal/modal";
+import { ID } from "../../../../../common/types";
+import { CalculateProfitability } from "../../../api/calculate-profitability/calculate-profitability";
+import { useCalculateProfitability } from "../../../api/calculate-profitability/use-calculate-profitability";
+import { useSaveProfitabilityResults } from "../../../api/save-profitability-results/use-save-profitability-results";
+import { ProfitabilityAnalysisFormSchema } from "../form-schemas/profitability-analysis-form-schema";
+import { AnalysisProfitabilityForm } from "./analysis-profitability-form";
+import { AnalysisProfitabilityResults } from "./analysis-profitability-results";
 
 interface AnalysisProfitabilityModalProps {
   companyId: ID | undefined;
