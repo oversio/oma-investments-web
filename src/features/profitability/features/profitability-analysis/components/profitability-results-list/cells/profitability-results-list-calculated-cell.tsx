@@ -14,7 +14,7 @@ export function ProfitabilityResultsListCalculatedCell({
     </div>
   ) : (
     <div className=" flex justify-center items-center gap-2">
-      <span>{results.averageDividendYield ?? 0}%</span>
+      <span className="text-lg font-bold">{results.averageDividendYield ?? 0}%</span>
       {params.desiredProfitability <= results.averageDividendYield ? (
         <ArrowUpIcon className=" text-success" />
       ) : (

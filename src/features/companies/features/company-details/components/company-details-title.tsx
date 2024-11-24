@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "../../../../../common/components/link/link";
 import { Skeleton } from "../../../../../common/components/skeleton/skeleton";
 import { useGetCompany } from "../../../api/get-company/use-get-company";
+import { CompanyTypeBadge } from "../../../components/company-type-badge";
 
 interface CompanyDetailsTitleProps {
   companyId?: string;
@@ -27,6 +28,7 @@ export function CompanyDetailsTitle({ companyId, hideDescription }: CompanyDetai
             <span className=" uppercase">({data?.mnemonic})</span>
           )}
         </h1>
+        <CompanyTypeBadge typeName={data?.type.name ?? ""} isLoading={isLoading} />
       </div>
 
       {!hideDescription && (

@@ -5,12 +5,12 @@ import { fetcher } from "../../../../common/api/fetcher";
 import { SettingsQueryKey } from "../../../../common/api/support/settings-query-key";
 import { AxiosMethod } from "../../../../common/api/types/axios-method";
 import { listOf } from "../../../../common/api/types/list-of";
-import { GetCompanyTypeListItem } from "./get-company-type-list-item";
+import { GetThresholdSettingsItem } from "./get-threshold-settings-list";
 
-export function useGetCompanyTypeList() {
+export function useGetThresholdSettingsList() {
   return useQuery({
-    queryKey: [SettingsQueryKey.settings, SettingsQueryKey.companyTypes],
+    queryKey: [SettingsQueryKey.settings, SettingsQueryKey.thresholdSettings],
     queryFn: async () =>
-      fetcher(AxiosMethod.Get, ApiEntryPoint.settings.companyTypes, listOf(GetCompanyTypeListItem)),
+      fetcher(AxiosMethod.Get, ApiEntryPoint.settings.thresholdSettings, listOf(GetThresholdSettingsItem)),
   });
 }

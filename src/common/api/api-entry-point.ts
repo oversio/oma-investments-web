@@ -20,9 +20,16 @@ export const ApiEntryPoint = {
       save: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability`,
       generate: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability/calculate`,
     },
+    solvency: {
+      list: (companyId: ID | undefined) => `/companies/${companyId}/analysis/solvency`,
+    },
   },
   settings: {
+    all: "/settings",
     companyTypes: "/settings/company-types",
     dividendTypes: "/settings/dividend-types",
+    indicators: "/settings/indicators",
+    securityLevels: "/settings/security-levels",
+    thresholdSettings: "/settings/threshold-settings",
   },
 };

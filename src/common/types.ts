@@ -21,3 +21,10 @@ export type DateTime = z.infer<typeof DateTime>;
 export type OnSubmitCallback<TFieldValues, TResult = unknown> = (
   input: TFieldValues,
 ) => Promise<TResult> | TResult;
+
+export enum HowGoodIsIt {
+  Penalty = -10,
+  Bad = -1,
+  Normal = 0,
+  Good = 1,
+}

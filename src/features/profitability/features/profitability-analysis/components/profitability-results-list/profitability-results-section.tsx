@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Button } from "../../../../../../common/components/button/button";
 import { ID } from "../../../../../../common/types";
 import { useGetProfitabilityResultsList } from "../../../../api/profitability-results-list/use-get-profitability-results-list";
-import { AnalysisProfitabilityModal } from "../../analysis-profitability-modal";
+import { AnalysisProfitabilityModal } from "../analysis-profitability-modal";
 import { ProfitabilityResultsList } from "./profitability-results-list";
 
 interface ProfitabilityResultsListSectionProps {
