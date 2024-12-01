@@ -25,7 +25,6 @@ export function AnalysisProfitabilityResults({
     <div className="grid grid-cols-24 mt-5 gap-y-3 md:gap-x-3">
       {indicators.length ? (
         <Fragment>
-          <h3 className=" col-span-full text-2xl mb-5">Resultados del análisis</h3>
           {indicators.map(indicator => (
             <IndicatorWidget
               {...indicator}

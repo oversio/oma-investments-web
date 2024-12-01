@@ -17,6 +17,8 @@ export const ApiEntryPoint = {
   analysis: {
     profitability: {
       list: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability`,
+      result: (companyId: ID | undefined, resultId: ID | undefined) =>
+        `/companies/${companyId}/analysis/profitability/${resultId}`,
       save: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability`,
       generate: (companyId: ID | undefined) => `/companies/${companyId}/analysis/profitability/calculate`,
     },

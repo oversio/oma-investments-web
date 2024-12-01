@@ -70,12 +70,17 @@ export function AnalysisProfitabilityModal({ companyId = "", onClose }: Analysis
       <AnalysisProfitabilityForm onSubmit={handleCalculateProfitability} />
 
       {/* Results */}
-      <AnalysisProfitabilityResults
-        params={params}
-        results={data?.results}
-        years={data?.years}
-        isLoading={!companyId || isPending || isError}
-      />
+      {data?.results ? (
+        <>
+          <h3 className=" col-span-full text-2xl mb-5">Resultados del análisis</h3>
+          <AnalysisProfitabilityResults
+            params={params}
+            results={data?.results}
+            years={data?.years}
+            isLoading={!companyId || isPending || isError}
+          />
+        </>
+      ) : null}
     </Modal>
   );
 }
