@@ -19,8 +19,8 @@ export function SolvencyAnalisysModal({ companyId = "", onClose }: SolvencyAnali
     onClose();
   };
 
-  const handleSaveResults = async () => {
-    console.log("Saving results");
+  const handleSaveResults = () => {
+    console.log("Saving results", companyId);
   };
 
   return (
