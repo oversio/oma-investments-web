@@ -5,6 +5,7 @@ import { GetProfitabilityResultsListItem } from "../../../api/profitability-resu
 import { ProfitabilityResultsListCalculatedCell } from "../components/profitability-results-list/cells/profitability-results-list-calculated-cell";
 import { ProfitabilityResultsListDateCell } from "../components/profitability-results-list/cells/profitability-results-list-date-cell";
 import { ProfitabilityResultsListDesiredCell } from "../components/profitability-results-list/cells/profitability-results-list-desired-cell";
+import { ProfitabilityResultsListDetailsCell } from "../components/profitability-results-list/cells/profitability-results-list-details-cell";
 import { ProfitabilityResultsListPriceCell } from "../components/profitability-results-list/cells/profitability-results-list-price-cell";
 import { ProfitabilityResultsListYearsCell } from "../components/profitability-results-list/cells/profitability-results-list-years-cell";
 
@@ -40,6 +41,12 @@ export function useProfitabilityResultsListColumns() {
         title: "Rent. Calculada",
         className: "justify-center",
         component: ProfitabilityResultsListCalculatedCell,
+      },
+      {
+        key: "actions",
+        title: "Acciones",
+        className: "justify-center",
+        component: ProfitabilityResultsListDetailsCell,
       },
     ] as Column<GetProfitabilityResultsListItem, string, string, unknown>[];
   }, []);
