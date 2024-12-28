@@ -28,12 +28,26 @@ export function DividendYearChart({
         values: [
           {
             name: legend,
-            value: total,
+            value: parseFloat(total.toFixed(3)),
           },
         ],
       })),
     [data, legend],
   );
+
+  if (isLoading) {
+    return (
+      <div className={classMerge(" flex flex-col", className)}>
+        <Skeleton className="w-[50%] h-7 rounded-md mb-3" />
+        <Skeleton
+          className={classMerge(
+            "w-full h-auto aspect-[1060/660] rounded-md",
+            aspectRatio ? `aspect-[${aspectRatio}]` : "",
+          )}
+        />
+      </div>
+    );
+  }
 
   const lineProps: SimpleLineProps[] = [
     {
@@ -49,20 +63,6 @@ export function DividendYearChart({
       },
     },
   ];
-
-  if (isLoading) {
-    return (
-      <div className={classMerge(" flex flex-col", className)}>
-        <Skeleton className="w-[50%] h-7 rounded-md mb-3" />
-        <Skeleton
-          className={classMerge(
-            "w-full h-auto aspect-[1060/660] rounded-md",
-            aspectRatio ? `aspect-[${aspectRatio}]` : "",
-          )}
-        />
-      </div>
-    );
-  }
 
   return (
     <div className={classMerge(" flex flex-col", className)}>

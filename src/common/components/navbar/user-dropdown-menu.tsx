@@ -4,7 +4,7 @@ import { useAuthContext } from "../../../context/context";
 import { Dropdown } from "../dropdown/dropdown";
 
 export function UserDropdownMenu() {
-  const { logout } = useAuthContext();
+  const { logout, userInfo } = useAuthContext();
   return (
     <Dropdown
       name="Profile Actions"
@@ -13,8 +13,8 @@ export function UserDropdownMenu() {
           key: "profile",
           content: (
             <>
-              <p className="font-semibold text-lg">Over Martinez</p>
-              <p className="text-sm text-gray-400">over.martinez@omasolutions.cl</p>
+              <p className="font-semibold text-lg">{userInfo?.fullName}</p>
+              <p className="text-sm text-gray-400">{userInfo?.email}</p>
             </>
           ),
           // eslint-disable-next-line no-console
@@ -34,7 +34,7 @@ export function UserDropdownMenu() {
         color="secondary"
         name="Jason Hughes"
         size="sm"
-        src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+        src={userInfo?.picture ?? ""}
       />
     </Dropdown>
   );
