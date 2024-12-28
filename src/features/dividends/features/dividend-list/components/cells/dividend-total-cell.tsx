@@ -5,6 +5,6 @@ export function DividendTotalCell({ total, isLoading }: DividendListCellProps) {
   return isLoading ? (
     <Skeleton className=" w-28 h-4" />
   ) : (
-    <div className=" w-full text-center text-base">$ {total ?? 0}</div>
+    <div className=" w-full text-center text-base">$ {total.toFixed(3) ?? 0}</div>
   );
 }

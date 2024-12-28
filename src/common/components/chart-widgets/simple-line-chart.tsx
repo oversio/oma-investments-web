@@ -62,16 +62,9 @@ export function SimpleLineChart({
             <Tooltip content={<CustomTooltip />} />
             {!hideLegend && <Legend />}
             {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-            {lineProps?.map(({ name, props: { ref, ...props } }) => <Line key={name} {...props} />)}
-            {/* <Line
-              type="monotone"
-              dataKey="pv"
-              stroke="#3b82f6"
-              activeDot={{ r: 8 }}
-              strokeWidth={2}
-              dot={false}
-            />
-            <Line type="monotone" strokeWidth={2} dataKey="oversio" stroke="#10b981" dot={false} /> */}
+            {lineProps?.map(({ name, props: { ref, ...props } }) => (
+              <Line key={name} {...props} label={<CustomeSingleLineLabel />} />
+            ))}
           </LineChart>
         </ResponsiveContainer>
       </CardBody>
@@ -88,4 +81,14 @@ function getData(data: SimpleLineChartDataProps[]) {
 
     return chartItem;
   });
+}
+
+function CustomeSingleLineLabel(props: Record<string, string | number | undefined>) {
+  const { x, y, stroke = "#fff", value } = props;
+
+  return (
+    <text x={x} y={y} dy={-4} fill={stroke as string} fontSize={12} textAnchor="middle">
+      {value}
+    </text>
+  );
 }
