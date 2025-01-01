@@ -4,8 +4,7 @@ import { useNavigate } from "react-router";
 
 import { OnSubmitCallback } from "../../types";
 import { classMerge } from "../../utils/class-merge";
-import { Panel, PanelProps } from "../panel/panel";
-import { ButtonAndLabel } from "../panel/panel-footer";
+import { ButtonAndLabel, Panel, PanelProps } from "../panel/panel";
 
 const SIDE_FORM_ID = "side-form-id";
 
@@ -57,7 +56,6 @@ export function SideForm<TFieldValues extends FieldValues, TResult = unknown>({
       isLoading={isLoading}
       isOpen={isOpen}
       onClose={() => void handleClose()}
-      placement="right"
       size={size}
       title={title}
       cancelButton={{
@@ -80,7 +78,7 @@ export function SideForm<TFieldValues extends FieldValues, TResult = unknown>({
           id={SIDE_FORM_ID}
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onSubmit={formProps.handleSubmit(handleSubmit)}
-          className=" flex flex-col max-h-full overflow-y-hidden px-7 py-6"
+          className=" flex flex-col max-h-full overflow-y-hidden p-1"
         >
           {children}
         </form>

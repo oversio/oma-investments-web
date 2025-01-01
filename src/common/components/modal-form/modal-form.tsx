@@ -4,7 +4,7 @@ import { FieldValues, FormProvider, SubmitHandler, UseFormReturn } from "react-h
 import { OnSubmitCallback } from "../../types";
 import { classMerge } from "../../utils/class-merge";
 import { Modal } from "../modal/modal";
-import { ButtonAndLabel } from "../panel/panel-footer";
+import { ButtonAndLabel } from "../panel/panel";
 
 const MODAL_FORM_ID = "modal-form-id";
 

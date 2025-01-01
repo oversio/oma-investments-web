@@ -32,6 +32,7 @@ export function AddDividendPanel() {
   return (
     <SideForm
       formProps={form}
+      size="sm"
       onSubmit={handleSubmit}
       successNavigationPath=".."
       title="Agregar dividendo"
@@ -53,8 +54,8 @@ export function AddDividendPanel() {
           value: id,
         }))}
       />
-      <FormInput name="date" label="Fecha" placeholder="Fecha de la dividend" type="date" />
-      <FormInput name="amount" label="Monto" placeholder="Monto de la dividend" type="number" />
+      <FormInput name="date" label="Fecha" type="date" />
+      <FormInput name="amount" label="Monto" placeholder="Monto del dividendo" type="number" />
     </SideForm>
   );
 }

@@ -1,7 +1,7 @@
 import { ModalFooter as ModalFooterUI } from "@nextui-org/react";
 
 import { Button } from "../button/button";
-import { ButtonAndLabel } from "../panel/panel-footer";
+import { ButtonAndLabel } from "../panel/panel";
 import { Skeleton } from "../skeleton/skeleton";
 
 export interface ModalFooterProps {
