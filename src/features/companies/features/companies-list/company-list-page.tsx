@@ -11,7 +11,7 @@ export function CompanyListPage() {
     <Layout>
       <div className="flex justify-between items-center mb-5">
         <h2 className=" text-3xl">Companies list</h2>
-        <Link to="create" color="primary" startContent={<FontAwesomeIcon icon={faPlusCircle} />}>
+        <Link to="new" color="primary" startContent={<FontAwesomeIcon icon={faPlusCircle} />}>
           Add company
         </Link>
       </div>

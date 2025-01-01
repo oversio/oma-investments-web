@@ -1,66 +1,65 @@
-import { PropsWithChildren, useCallback, useEffect, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import Cookies from "js-cookie";
+import { PropsWithChildren, useCallback, useMemo } from "react";
+import { useCookie } from "react-use";
 
 import { appConfig } from "../app/app-config";
 import { queryClient } from "../common/api/generate-query-client";
 import { UserQueryKey } from "../common/api/support/user-query-key";
-import { TOKEN_KEY_NAME, TOKEN_PARAM_NAME } from "../common/constants";
-import { useLocalStorage } from "../common/hooks/use-local-storage";
+import { TOKEN_PARAM_NAME } from "../common/constants";
 import { useGetUserInfo } from "../features/auth/api/use-get-user-info";
 import { AuthenticationMethod } from "../features/auth/types";
-import { cleanStorage } from "../features/auth/utils/clean-storage";
 import { AuthContext, AuthContextProps } from "./context";
 
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const urlToken = searchParams.get(TOKEN_PARAM_NAME);
-  const [token, setToken] = useLocalStorage<string | undefined>(TOKEN_KEY_NAME, undefined);
-
+  const [token, , removeToken] = useCookie(TOKEN_PARAM_NAME);
   const { user, isLoading } = useGetUserInfo(Boolean(token));
 
-  useEffect(() => {
-    if (urlToken) {
-      setToken(urlToken);
-      searchParams.delete(TOKEN_PARAM_NAME);
-      setSearchParams(searchParams);
-    }
-  }, [searchParams, setSearchParams, setToken, urlToken]);
+  const login = (method: AuthenticationMethod, redirectTo: string = "/") => {
+    Cookies.set("returnTo", redirectTo, {
+      path: "/",
+      sameSite: import.meta.env.DEV ? "lax" : "none",
+      secure: !import.meta.env.DEV,
+      domain: import.meta.env.DEV ? undefined : location.hostname,
+    });
 
-  const isAuthenticated = useMemo(() => {
-    if (user) return true;
-    if (isLoading || urlToken) return null;
-    return false;
-  }, [isLoading, user, urlToken]);
-
-  const login = (method: AuthenticationMethod, redirectTo?: string) => {
-    window.location.href = appConfig.getLoginUrl(method, redirectTo);
+    setTimeout(() => {
+      window.location.href = appConfig.getLoginUrl(method);
+    }, 100);
   };
 
   const logout = useCallback(() => {
+    removeToken();
     queryClient.removeQueries({
       queryKey: [UserQueryKey.User, UserQueryKey.Info],
     });
-    setToken("");
-    cleanStorage();
-  }, [setToken]);
+  }, [removeToken]);
 
   const contextValue = useMemo<AuthContextProps>(() => {
-    if (isAuthenticated) {
+    if (user) {
       return {
         isAuthenticated: true,
-        userInfo: user!,
+        userInfo: user,
+        login,
+        logout,
+      };
+    }
+
+    if (isLoading) {
+      return {
+        isAuthenticated: null,
+        userInfo: null,
         login,
         logout,
       };
     }
 
     return {
-      isAuthenticated,
+      isAuthenticated: false,
       userInfo: null,
       login,
       logout,
     };
-  }, [isAuthenticated, logout, user]);
+  }, [isLoading, logout, user]);
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };

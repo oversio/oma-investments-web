@@ -41,6 +41,7 @@ export function CreateCompanyPanel() {
       successNavigationPath={getCompanyDetailPath}
       title="Agregar empresa"
       isLoading={isLoading}
+      size="sm"
       submitButtonProps={{
         label: "Agregar",
         startContent: <FontAwesomeIcon icon={faPlus} />,

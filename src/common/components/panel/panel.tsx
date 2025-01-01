@@ -1,37 +1,65 @@
+import {
+  Button,
+  ButtonProps,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerProps,
+  Skeleton,
+} from "@nextui-org/react";
 import { PropsWithChildren } from "react";
 
-import { Drawer, DrawerProps } from "../drawer/drawer";
-import { PanelFooter, PanelFooterProps } from "./panel-footer";
-import { PanelHeader } from "./panel-header";
+export type ButtonAndLabel = ButtonProps & {
+  label: string;
+};
 
-export type PanelProps = PropsWithChildren<PanelFooterProps> &
+export type PanelProps = PropsWithChildren &
   DrawerProps & {
     title?: string;
+    cancelButton?: ButtonAndLabel;
+    confirmButton?: ButtonAndLabel;
+    isLoading?: boolean;
   };
 
-export function Panel({
-  children,
-  title,
-  cancelButton,
-  confirmButton,
-  onClose,
-  isLoading,
-  ...props
-}: PanelProps) {
+export function Panel({ children, title, cancelButton, confirmButton, isLoading, ...props }: PanelProps) {
   return (
-    <Drawer onClose={onClose} placement="right" containerClassName="flex flex-col" {...props}>
-      <PanelHeader title={title} onClose={onClose} />
-
-      <div className=" flex-grow max-h-full overflow-y-auto">{children}</div>
-
-      {cancelButton || confirmButton ? (
-        <PanelFooter
-          cancelButton={cancelButton}
-          confirmButton={confirmButton}
-          onClose={onClose}
-          isLoading={isLoading}
-        />
-      ) : null}
+    <Drawer
+      placement="right"
+      backdrop="blur"
+      classNames={{
+        base: "data-[placement=right]:sm:m-2 data-[placement=left]:sm:m-2  rounded-medium",
+      }}
+      {...props}
+    >
+      <DrawerContent>
+        {onDrawerClose => (
+          <>
+            <DrawerHeader>
+              <h2 className="text-base font-semibold">{title}</h2>
+            </DrawerHeader>
+            <DrawerBody>{children}</DrawerBody>
+            <DrawerFooter>
+              <div className="flex justify-end items-center gap-2">
+                {cancelButton ? (
+                  <Button variant="flat" onPress={onDrawerClose} {...cancelButton}>
+                    {cancelButton.label}
+                  </Button>
+                ) : null}
+                {confirmButton &&
+                  (!isLoading ? (
+                    <Button color="primary" {...confirmButton}>
+                      {confirmButton.label}
+                    </Button>
+                  ) : (
+                    <Skeleton className=" h-10 w-24" />
+                  ))}
+              </div>
+            </DrawerFooter>
+          </>
+        )}
+      </DrawerContent>
     </Drawer>
   );
 }

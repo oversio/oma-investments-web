@@ -1,7 +1,8 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import { appConfig } from "../../app/app-config";
-import { TOKEN_KEY_NAME, TOKEN_TYPE_KEY_NAME } from "../constants";
+import { TOKEN_PARAM_NAME } from "../constants";
 
 export const restClient = axios.create({
   baseURL: appConfig.apiBaseUrl,
@@ -9,11 +10,10 @@ export const restClient = axios.create({
 
 restClient.interceptors.request.use(
   config => {
-    const token = localStorage.getItem(TOKEN_KEY_NAME);
-    const tokenType = localStorage.getItem(TOKEN_TYPE_KEY_NAME) ?? "Bearer";
+    const token = Cookies.get(TOKEN_PARAM_NAME);
 
     if (token) {
-      config.headers["Authorization"] ??= `${tokenType} ${token}`.replace(/"/g, "");
+      config.headers["Authorization"] ??= `Bearer ${token}`.replace(/"/g, "");
     }
 
     return config;

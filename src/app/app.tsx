@@ -39,7 +39,7 @@ export function App() {
                     <Route index element={<DashboardPage />} />
                     <Route path="companies">
                       <Route path="" element={<CompanyListPage />}>
-                        <Route path="create" element={<CreateCompanyPanel />} />
+                        <Route path="new" element={<CreateCompanyPanel />} />
                       </Route>
                       <Route path=":id" element={<Layout />}>
                         <Route path="" element={<CompanyDetailsPage />}>
