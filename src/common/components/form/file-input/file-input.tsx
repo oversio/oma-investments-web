@@ -14,16 +14,33 @@ interface FileInputProps {
   accept?: DropzoneOptions["accept"];
   helperText?: string;
   disabled?: boolean;
+  onChange?: (files?: File) => void;
 }
 
-export function FileInput({ name, label, placeholder, accept, helperText, disabled }: FileInputProps) {
+export function FileInput({
+  name,
+  label,
+  placeholder,
+  accept,
+  helperText,
+  disabled,
+  onChange,
+}: FileInputProps) {
   const {
     field,
     fieldState: { error },
   } = useController({ name });
   const currentValue = field.value as File | undefined;
 
-  const handleSelectFile = (files: File[]) => field.onChange(files[0]);
+  const handleSelectFile = (files: File[]) => {
+    field.onChange(files[0]);
+    onChange?.(files[0]);
+  };
+
+  const handleRemoveFile = () => {
+    field.onChange(undefined);
+    onChange?.();
+  };
 
   return (
     <div>
@@ -42,7 +59,7 @@ export function FileInput({ name, label, placeholder, accept, helperText, disabl
             <>
               <span className="text-primary"> {currentValue.name}</span>
               <Tooltip content="Eliminar archivo" placement="top">
-                <Button isIconOnly onPress={() => field.onChange(undefined)} color="danger" variant="flat">
+                <Button isIconOnly onPress={handleRemoveFile} color="danger" variant="flat">
                   <FontAwesomeIcon icon={faTrash} />
                 </Button>
               </Tooltip>
