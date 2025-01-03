@@ -5,7 +5,7 @@ import { fetcher } from "../../../../common/api/fetcher";
 import { AnalysisQueryKey } from "../../../../common/api/support/analysis-query-key";
 import { CompanyQueryKey } from "../../../../common/api/support/company-query-key";
 import { AxiosMethod } from "../../../../common/api/types/axios-method";
-import { MutationError } from "../../../../common/api/types/mutation-error";
+import { MutationError } from "../../../../common/api/errors/mutation-error";
 import { ID } from "../../../../common/types";
 import { SaveProfitabilityResults } from "./save-profitability-results";
 import {

@@ -9,13 +9,12 @@ import { ReactNode } from "react";
 
 import { ModalFooter, ModalFooterProps } from "./modal-footer";
 
-type ModalProps = Pick<
+export type ModalProps = Pick<
   ModalUIProps,
   "placement" | "size" | "backdrop" | "isDismissable" | "isKeyboardDismissDisabled"
 > &
   ModalFooterProps & {
     isOpen: boolean;
-    onClose: () => void;
     header?: ReactNode;
     children: ReactNode;
   };
@@ -32,9 +31,9 @@ export function Modal({
   isKeyboardDismissDisabled,
   placement = "top-center",
   size,
-  backdrop = "opaque",
+  backdrop = "blur",
 }: ModalProps) {
-  const handleCloseModal = (open: boolean) => !open && onClose();
+  const handleCloseModal = (open: boolean) => !open && onClose?.();
 
   return (
     <ModalUI

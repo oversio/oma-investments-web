@@ -1,7 +1,7 @@
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { ZodType, ZodTypeDef } from "zod";
 
-import { logError } from "../logger/log-error";
+import { parseMutationErrors } from "./errors/parse-mutation-errors";
 import { restClient } from "./rest-client";
 import { AxiosMethod } from "./types/axios-method";
 import { DataResponse } from "./types/data-response";
@@ -39,10 +39,5 @@ export async function fetcher<TItem, TApiItem, TPayload, Def extends ZodTypeDef 
     );
   }
 
-  return request
-    .then(response => itemType.parse(response.data))
-    .catch(error => {
-      logError("error->", error);
-      throw new Error("Invalid item");
-    });
+  return request.then(response => itemType.parse(response.data)).catch(parseMutationErrors<TPayload, TItem>);
 }

@@ -1,10 +1,13 @@
-import { ModalProps } from "@nextui-org/react";
+import { Alert, ModalProps } from "@nextui-org/react";
 import { FieldValues, FormProvider, SubmitHandler, UseFormReturn } from "react-hook-form";
 
+import { MutationError } from "../../api/errors/mutation-error";
+import { useServerFormValidationErrors } from "../../api/errors/use-server-form-validation-errors";
 import { OnSubmitCallback } from "../../types";
 import { classMerge } from "../../utils/class-merge";
 import { Modal } from "../modal/modal";
 import { ButtonAndLabel } from "../panel/panel";
+import { UploadFileErrorAlert } from "../upload-file-error/upload-file-error-alert";
 
 const MODAL_FORM_ID = "modal-form-id";
 
@@ -21,6 +24,7 @@ interface ModalFormProps<TFieldValues extends FieldValues, TResult> {
   cancelButtonProps?: ButtonAndLabel;
   size?: ModalProps["size"];
   formClassName?: string;
+  mutationErrors?: MutationError<TFieldValues> | null;
 }
 
 export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
@@ -35,6 +39,7 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
   cancelButtonProps,
   size,
   formClassName,
+  mutationErrors,
 }: ModalFormProps<TFieldValues, TResult>) {
   const { isSubmitting } = formProps.formState;
 
@@ -42,6 +47,8 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
     await onSubmit(form);
     onClose();
   };
+
+  const { generalErrorMessages, fileErrorList } = useServerFormValidationErrors(formProps, mutationErrors);
 
   return (
     <Modal
@@ -52,7 +59,6 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
       size={size}
       header={title}
       isDismissable={false}
-      backdrop="blur"
       isKeyboardDismissDisabled={true}
       cancelButton={{
         label: cancelButtonProps?.label ?? "Cancelar",
@@ -77,6 +83,10 @@ export function ModalForm<TFieldValues extends FieldValues, TResult = unknown>({
           onSubmit={formProps.handleSubmit(handleSubmit)}
           className={classMerge(" flex flex-col max-h-full overflow-y-hidden gap-4", formClassName)}
         >
+          {fileErrorList && <UploadFileErrorAlert errors={fileErrorList} />}
+          {generalErrorMessages && (
+            <Alert color="danger" description={generalErrorMessages} className="mb-4" variant="flat" />
+          )}
           {children}
         </form>
       </FormProvider>

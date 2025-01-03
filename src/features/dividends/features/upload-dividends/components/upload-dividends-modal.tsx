@@ -17,7 +17,7 @@ interface UploadDividendModalProps {
 }
 
 export function UploadDividendModal({ companyId, onClose }: UploadDividendModalProps) {
-  const { uploadDividends, isPending, isError } = useUploadDividendsFile(companyId);
+  const { uploadDividends, isPending, isError, error, reset } = useUploadDividendsFile(companyId);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -63,6 +63,7 @@ export function UploadDividendModal({ companyId, onClose }: UploadDividendModalP
       isOpen={isOpen}
       onClose={() => void handleClose()}
       formProps={form}
+      mutationErrors={error}
       onSubmit={handleSubmit}
       title="Importar dividendos"
       size="xl"
@@ -79,6 +80,7 @@ export function UploadDividendModal({ companyId, onClose }: UploadDividendModalP
         placeholder="Arrastra y suelta tu archivo aquí o haz click para cargar"
         accept={{ "text/csv": [".csv"] }}
         helperText="Solo se permiten archivos CSV y tamaño máximo de 100KB"
+        onChange={() => reset()}
       />
       <RadioGroup label="Modo de carga" name="overwrite" items={overwriteOptions} variant="block" />
     </ModalForm>

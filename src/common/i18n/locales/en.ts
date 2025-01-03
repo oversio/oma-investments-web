@@ -41,6 +41,12 @@ export const en = {
   "analysis.profitability.results.rising-dividends.0":
     "Los dividendos crecen lentamente o no están creciendo",
   "analysis.profitability.results.rising-dividends.1": "Los dividendos crecen a buen ritmo!",
+  // Server Validation Errors
+  "server-validation.file-column.invalid_date": `Columna "{column}": "{value}" no es una fecha válida o no cumple con el formato "AAAA-MM-DD".`,
+  "server-validation.file-column.invalid_type": `Columna "{column}": "{value}" no es válido, para valores numéricos usa el punto "." como separador decimal.`,
+  "server-validation.file-column.required": `Columna "{column}": Es requerida.`,
+  "server-validation.file-column.invalid_enum_value": `Columna "{column}": "{value}" no es permitido, solo se aceptan los valores {expected}`,
+  "server-validation.file-column.unknown": `Columna "{column}": "{value}" genera un error desconocido, favor verificar.`,
   // Actions
   "actions.see-more": "({count}) more",
   "actions.see-less": "See less",

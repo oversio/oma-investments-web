@@ -4,7 +4,7 @@ import { ApiEntryPoint } from "../../../../common/api/api-entry-point";
 import { fetcher } from "../../../../common/api/fetcher";
 import { DividendQueryKey } from "../../../../common/api/support/dividend-query-key";
 import { AxiosMethod } from "../../../../common/api/types/axios-method";
-import { MutationError } from "../../../../common/api/types/mutation-error";
+import { MutationError } from "../../../../common/api/errors/mutation-error";
 import { AddDividend } from "./add-dividend";
 import { AddDividendInput, addDividendTransformer } from "./add-dividend-input";
 
