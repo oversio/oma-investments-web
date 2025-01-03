@@ -2,9 +2,10 @@ import { Avatar } from "@nextui-org/react";
 
 import { useAuthContext } from "../../../context/context";
 import { Dropdown } from "../dropdown/dropdown";
+import { Skeleton } from "../skeleton/skeleton";
 
 export function UserDropdownMenu() {
-  const { logout, userInfo } = useAuthContext();
+  const { logout, userInfo, isAuthenticated } = useAuthContext();
   return (
     <Dropdown
       name="Profile Actions"
@@ -17,8 +18,6 @@ export function UserDropdownMenu() {
               <p className="text-sm text-gray-400">{userInfo?.email}</p>
             </>
           ),
-          // eslint-disable-next-line no-console
-          onClick: console.log,
           className: "flex flex-col",
           showDivider: true,
         },
@@ -27,15 +26,19 @@ export function UserDropdownMenu() {
         { key: "logout", content: "Log Out", color: "danger", onClick: logout },
       ]}
     >
-      <Avatar
-        isBordered
-        as="button"
-        className="transition-transform"
-        color="secondary"
-        name="Jason Hughes"
-        size="sm"
-        src={userInfo?.picture ?? ""}
-      />
+      {isAuthenticated === null ? (
+        <Skeleton className="rounded-full size-10" />
+      ) : (
+        <Avatar
+          isBordered
+          as="button"
+          className="transition-transform"
+          color="secondary"
+          name={userInfo?.fullName}
+          size="sm"
+          src={userInfo?.picture ?? ""}
+        />
+      )}
     </Dropdown>
   );
 }
