@@ -14,7 +14,7 @@ type CompanyTypeBadgeProps = {
 export function CompanyTypeBadge({ typeName, isLoading }: CompanyTypeBadgeProps) {
   const t = useTranslate();
   return isLoading ? (
-    <Skeleton className=" w-36 h-5" />
+    <Skeleton className=" w-28 h-7" />
   ) : (
     <Chip
       startContent={<FontAwesomeIcon icon={getTypeIcon(typeName)} />}

@@ -1,12 +1,12 @@
 import { ButtonProps as BaseButtonProps, Ripple, Spinner, useButton } from "@nextui-org/react";
 import { forwardRef } from "react";
-import { Link as RRLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export interface ButtonProps extends BaseButtonProps {
   to: string;
 }
 
-export const Link = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const LinkButton = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     domRef,
     children,
@@ -32,15 +32,15 @@ export const Link = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { onClick: _, ...btnProps } = getButtonProps();
 
   return (
-    <RRLink ref={domRef} className={styles} {...btnProps} to={props.to}>
+    <Link ref={domRef} className={styles} {...btnProps} to={props.to}>
       {startContent}
       {isLoading && spinnerPlacement === "start" && spinner}
       {children}
       {isLoading && spinnerPlacement === "end" && spinner}
       {endContent}
       {!disableRipple && <Ripple ripples={ripples} onClear={() => null} />}
-    </RRLink>
+    </Link>
   );
 });
 
-Link.displayName = "Link";
+LinkButton.displayName = "LinkButton";

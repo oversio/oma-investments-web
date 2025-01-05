@@ -1,7 +1,7 @@
 import { faArrowLeft } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Link } from "../../../../../common/components/link/link";
+import { LinkButton } from "../../../../../common/components/link/link";
 import { Skeleton } from "../../../../../common/components/skeleton/skeleton";
 import { useGetCompany } from "../../../api/get-company/use-get-company";
 import { CompanyTypeBadge } from "../../../components/company-type-badge";
@@ -17,9 +17,9 @@ export function CompanyDetailsTitle({ companyId, hideDescription }: CompanyDetai
   return (
     <div className="flex flex-col mb-4">
       <div className="flex items-center mb-5 gap-3">
-        <Link to=".." isIconOnly>
+        <LinkButton to=".." isIconOnly>
           <FontAwesomeIcon icon={faArrowLeft} />
-        </Link>
+        </LinkButton>
         <h1 className=" flex items-center gap-1 text-3xl capitalize">
           {isLoading || isError ? <Skeleton className=" w-80 h-8" /> : data?.name}
           {isLoading || isError ? (

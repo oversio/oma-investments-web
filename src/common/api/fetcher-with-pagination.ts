@@ -6,7 +6,7 @@ import { restClient } from "./rest-client";
 import { AxiosMethod } from "./types/axios-method";
 import { apiListDataWithPagination, ListDataPaginatedResponse } from "./types/list-data-paginated-response";
 
-export function fetcherWithPagination<TItem, TApiItem, TPayload, Def extends ZodTypeDef = ZodTypeDef>(
+export async function fetcherWithPagination<TItem, TApiItem, TPayload, Def extends ZodTypeDef = ZodTypeDef>(
   method: AxiosMethod,
   url: string,
   itemType: ZodType<TItem, Def, TApiItem>,
