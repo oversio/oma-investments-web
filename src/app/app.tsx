@@ -3,6 +3,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import { queryClient } from "../common/api/generate-query-client";
+import { LayoutContextProvider } from "../common/components/layout/context/layout-context-provider";
 import { Layout } from "../common/components/layout/layout";
 import { ProtectedRoute } from "../common/components/protected-route/protected-route";
 import { ToastContainer } from "../common/components/toast/components/toast-container";
@@ -24,34 +25,43 @@ export function App() {
         <NextUIProvider>
           <BrowserRouter>
             <AuthContextProvider>
-              <Routes>
-                <Route
-                  element={
-                    <>
-                      <Outlet />
-                      <ToastContainer />
-                    </>
-                  }
-                >
-                  <Route path="/login" element={<LoginPage />} />
+              <LayoutContextProvider>
+                <Routes>
+                  <Route
+                    element={
+                      <>
+                        <Outlet />
+                        <ToastContainer />
+                      </>
+                    }
+                  >
+                    <Route path="/login" element={<LoginPage />} />
 
-                  <Route path="/" element={<ProtectedRoute />}>
-                    <Route index element={<DashboardPage />} />
-                    <Route path="companies">
-                      <Route path="" element={<CompanyListPage />}>
-                        <Route path="new" element={<CreateCompanyPanel />} />
-                      </Route>
-                      <Route path=":id" element={<Layout />}>
-                        <Route path="" element={<CompanyDetailsPage />}>
-                          <Route path="add-dividend" element={<AddDividendPanel />} />
+                    <Route
+                      path="/"
+                      element={
+                        <ProtectedRoute>
+                          <Layout />
+                        </ProtectedRoute>
+                      }
+                    >
+                      <Route index element={<DashboardPage />} />
+                      <Route path="companies">
+                        <Route path="" element={<CompanyListPage />}>
+                          <Route path="new" element={<CreateCompanyPanel />} />
+                        </Route>
+                        <Route path=":id">
+                          <Route path="" element={<CompanyDetailsPage />}>
+                            <Route path="add-dividend" element={<AddDividendPanel />} />
+                          </Route>
                         </Route>
                       </Route>
+                      <Route path="settings" element={<SettingsPage />} />
                     </Route>
-                    <Route path="settings" element={<SettingsPage />} />
+                    <Route path="*" element={<div>Not found</div>} />
                   </Route>
-                  <Route path="*" element={<div>Not found</div>} />
-                </Route>
-              </Routes>
+                </Routes>
+              </LayoutContextProvider>
             </AuthContextProvider>
           </BrowserRouter>
         </NextUIProvider>

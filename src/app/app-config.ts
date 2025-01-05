@@ -2,6 +2,7 @@ import OMAWhiteLogoSvg from "../assets/logos/red-white-logo.svg";
 import { AuthenticationMethod } from "../features/auth/types";
 
 export const appConfig = {
+  name: "OMA Stock Analyzer",
   logo: {
     svgWhite: OMAWhiteLogoSvg,
   },
