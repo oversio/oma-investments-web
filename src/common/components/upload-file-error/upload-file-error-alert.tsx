@@ -1,4 +1,4 @@
-import { Alert } from "@nextui-org/react";
+import { Alert } from "@heroui/react";
 import { useState } from "react";
 
 import { UploadFileErrorListModal } from "./upload-file-error-list-modal";

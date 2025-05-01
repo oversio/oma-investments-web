@@ -1,4 +1,4 @@
-import { Switch, SwitchProps } from "@nextui-org/react";
+import { Switch, SwitchProps } from "@heroui/react";
 import { useController } from "react-hook-form";
 
 import { classMerge } from "../../../utils/class-merge";

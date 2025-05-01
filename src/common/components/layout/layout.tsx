@@ -1,6 +1,6 @@
 import { faCircleChevronLeft, faCircleChevronRight, faPowerOff } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Spacer, Tooltip } from "@nextui-org/react";
+import { Button, Spacer, Tooltip } from "@heroui/react";
 import { Outlet } from "react-router";
 
 import { appConfig } from "../../../app/app-config";

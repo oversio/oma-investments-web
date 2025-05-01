@@ -1,5 +1,5 @@
 import { faEye } from "@fortawesome/pro-light-svg-icons";
-import { Skeleton, Tooltip } from "@nextui-org/react";
+import { Skeleton, Tooltip } from "@heroui/react";
 import { useState } from "react";
 
 import { IconButton } from "../../../../../../../common/components/icon-button/icon-button";

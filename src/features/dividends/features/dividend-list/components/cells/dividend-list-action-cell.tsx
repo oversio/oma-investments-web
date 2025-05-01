@@ -1,5 +1,5 @@
 import { faEye } from "@fortawesome/pro-light-svg-icons";
-import { Popover, PopoverContent, PopoverTrigger, Tooltip } from "@nextui-org/react";
+import { Popover, PopoverContent, PopoverTrigger, Tooltip } from "@heroui/react";
 
 import { IconButton } from "../../../../../../common/components/icon-button/icon-button";
 import { Skeleton } from "../../../../../../common/components/skeleton/skeleton";

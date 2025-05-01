@@ -1,6 +1,6 @@
 import { faCloudSlash, faCloudUpload } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Spinner } from "@nextui-org/react";
+import { Spinner } from "@heroui/react";
 import { ReactNode, useMemo, useState } from "react";
 import { DropEvent, DropzoneOptions, FileRejection, useDropzone } from "react-dropzone";
 

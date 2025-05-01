@@ -1,4 +1,4 @@
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router";
 
@@ -13,13 +13,13 @@ export function App() {
   return (
     <I18nProvider>
       <QueryClientProvider client={queryClient}>
-        <NextUIProvider>
+        <HeroUIProvider>
           <AuthContextProvider>
             <LayoutContextProvider>
               <RouterProvider router={router} />
             </LayoutContextProvider>
           </AuthContextProvider>
-        </NextUIProvider>
+        </HeroUIProvider>
         <ReactQueryDevTool />
       </QueryClientProvider>
     </I18nProvider>

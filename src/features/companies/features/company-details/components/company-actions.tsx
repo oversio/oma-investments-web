@@ -1,6 +1,6 @@
 import { faEdit, faTrash } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 
 import { Button } from "../../../../../common/components/button/button";
 

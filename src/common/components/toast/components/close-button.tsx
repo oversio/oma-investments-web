@@ -1,5 +1,5 @@
 import { faTimes } from "@fortawesome/pro-light-svg-icons";
-import { ButtonProps } from "@nextui-org/react";
+import { ButtonProps } from "@heroui/react";
 import { TypeOptions } from "react-toastify";
 
 import { CloseButtonProps } from "../../../../../node_modules/react-toastify/dist/components/CloseButton";

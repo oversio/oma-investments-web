@@ -1,6 +1,6 @@
 import { IconDefinition } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, CardBody } from "@nextui-org/react";
+import { Card, CardBody } from "@heroui/react";
 
 import { classMerge } from "../../utils/class-merge";
 import { Skeleton } from "../skeleton/skeleton";

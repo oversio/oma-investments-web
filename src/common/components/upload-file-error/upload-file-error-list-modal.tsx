@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/react";
 
 import { ModalInfo } from "../modal-info/modal-info";
 import { FileRowErrorProps } from "./upload-file-error-alert";

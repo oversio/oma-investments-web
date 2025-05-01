@@ -1,4 +1,4 @@
-import { Button as UIButton, ButtonProps } from "@nextui-org/react";
+import { Button as UIButton, ButtonProps } from "@heroui/react";
 import { forwardRef } from "react";
 
 import { classMerge } from "../../utils/class-merge";

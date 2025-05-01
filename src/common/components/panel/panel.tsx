@@ -8,7 +8,7 @@ import {
   DrawerHeader,
   DrawerProps,
   Skeleton,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { PropsWithChildren } from "react";
 
 export type ButtonAndLabel = ButtonProps & {

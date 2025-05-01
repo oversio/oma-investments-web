@@ -1,4 +1,4 @@
-import { ModalFooter as ModalFooterUI } from "@nextui-org/react";
+import { ModalFooter as ModalFooterUI } from "@heroui/react";
 
 import { Button } from "../button/button";
 import { ButtonAndLabel } from "../panel/panel";

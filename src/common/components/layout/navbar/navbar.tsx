@@ -1,6 +1,6 @@
 import { faArrowLeft, faSidebar } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
+import { Button, Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/react";
 
 import { Skeleton } from "../../skeleton/skeleton";
 import { title as titleStyles } from "../../ui/primitive";
