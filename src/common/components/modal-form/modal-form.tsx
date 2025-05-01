@@ -1,4 +1,4 @@
-import { Alert, ModalProps } from "@nextui-org/react";
+import { Alert, ModalProps } from "@heroui/react";
 import { FieldValues, FormProvider, SubmitHandler, UseFormReturn } from "react-hook-form";
 
 import { MutationError } from "../../api/errors/mutation-error";

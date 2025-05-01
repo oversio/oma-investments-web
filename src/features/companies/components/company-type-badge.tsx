@@ -1,6 +1,6 @@
 import { faBuildingColumns, faChartMixedUpCircleDollar, faSparkles } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 
 import { Skeleton } from "../../../common/components/skeleton/skeleton";
 import { useTranslate } from "../../../common/i18n/hooks/use-translate";

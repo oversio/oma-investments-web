@@ -5,7 +5,7 @@ import {
   DropdownProps as UIDropdownProps,
   DropdownTrigger,
   MenuItemProps,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { PropsWithChildren, ReactNode } from "react";
 
 export type DropdownItemProps = {

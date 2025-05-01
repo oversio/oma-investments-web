@@ -1,6 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, ButtonProps } from "@nextui-org/react";
+import { Button, ButtonProps } from "@heroui/react";
 import { forwardRef } from "react";
 
 import { classMerge } from "../../utils/class-merge";

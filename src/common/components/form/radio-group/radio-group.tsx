@@ -1,4 +1,4 @@
-import { Radio, RadioGroup as RadioGroupUI } from "@nextui-org/react";
+import { Radio, RadioGroup as RadioGroupUI } from "@heroui/react";
 import { useController } from "react-hook-form";
 
 import { classMerge } from "../../../utils/class-merge";

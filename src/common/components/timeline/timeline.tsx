@@ -1,4 +1,4 @@
-import { ButtonProps, Card, CardBody, CardHeader, Chip, ChipProps } from "@nextui-org/react";
+import { ButtonProps, Card, CardBody, CardHeader, Chip, ChipProps } from "@heroui/react";
 
 import { classMerge } from "../../utils/class-merge";
 import { DateTimeFormatType, formatDateTime } from "../../utils/format-date-time";

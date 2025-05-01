@@ -6,8 +6,8 @@ import {
   type ListboxProps,
   type ListboxSectionProps,
   type Selection,
-} from "@nextui-org/react";
-import { Listbox, ListboxItem, ListboxSection, Tooltip } from "@nextui-org/react";
+} from "@heroui/react";
+import { Listbox, ListboxItem, ListboxSection, Tooltip } from "@heroui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 

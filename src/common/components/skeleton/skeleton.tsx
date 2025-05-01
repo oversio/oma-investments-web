@@ -1,4 +1,4 @@
-import { Skeleton as UiSkeleton } from "@nextui-org/react";
+import { Skeleton as UiSkeleton } from "@heroui/react";
 
 import { classMerge } from "../../utils/class-merge";
 

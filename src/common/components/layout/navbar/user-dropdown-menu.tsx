@@ -1,4 +1,4 @@
-import { Avatar } from "@nextui-org/react";
+import { Avatar } from "@heroui/react";
 
 import { useAuthContext } from "../../../../context/context";
 import { Dropdown } from "../../dropdown/dropdown";

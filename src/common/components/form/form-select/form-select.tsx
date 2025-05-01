@@ -1,4 +1,4 @@
-import { Select, SelectItem, SelectProps } from "@nextui-org/react";
+import { Select, SelectItem, SelectProps } from "@heroui/react";
 import { useController } from "react-hook-form";
 
 import { classMerge } from "../../../utils/class-merge";

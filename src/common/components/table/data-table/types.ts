@@ -1,4 +1,4 @@
-import { TableColumnProps, TableProps } from "@nextui-org/react";
+import { TableColumnProps, TableProps } from "@heroui/react";
 import { ReactNode } from "react";
 
 export const enum SortOrder {

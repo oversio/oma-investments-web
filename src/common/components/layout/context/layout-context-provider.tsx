@@ -1,4 +1,4 @@
-import { ButtonProps, useDisclosure } from "@nextui-org/react";
+import { ButtonProps, useDisclosure } from "@heroui/react";
 import { useCallback, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
