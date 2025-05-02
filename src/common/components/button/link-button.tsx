@@ -1,6 +1,6 @@
 import { ButtonProps as BaseButtonProps, Ripple, Spinner, useButton } from "@heroui/react";
 import { forwardRef } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export interface ButtonProps extends BaseButtonProps {
   to: string;

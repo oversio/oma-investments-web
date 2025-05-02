@@ -1,7 +1,7 @@
 import { faArrowLeft } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { LinkButton } from "../../../../../common/components/link/link";
+import { LinkButton } from "../../../../../common/components/button/link-button";
 import { Skeleton } from "../../../../../common/components/skeleton/skeleton";
 import { useGetCompany } from "../../../api/get-company/use-get-company";
 import { CompanyTypeBadge } from "../../../components/company-type-badge";

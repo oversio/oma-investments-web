@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 
 import { Column } from "../../../../../common/components/table/data-table/types";
-import { GetProfitabilityResultsListItem } from "../../../api/profitability-results-list/get-profitability-results-list-item";
-import { ProfitabilityResultsListCalculatedCell } from "../components/profitability-results-list/cells/profitability-results-list-calculated-cell";
-import { ProfitabilityResultsListDateCell } from "../components/profitability-results-list/cells/profitability-results-list-date-cell";
-import { ProfitabilityResultsListDesiredCell } from "../components/profitability-results-list/cells/profitability-results-list-desired-cell";
-import { ProfitabilityResultsListDetailsCell } from "../components/profitability-results-list/cells/profitability-results-list-details-cell";
-import { ProfitabilityResultsListPriceCell } from "../components/profitability-results-list/cells/profitability-results-list-price-cell";
-import { ProfitabilityResultsListYearsCell } from "../components/profitability-results-list/cells/profitability-results-list-years-cell";
+import type { GetProfitabilityResultsListItem } from "../../../api/profitability-results-list/get-profitability-results-list-item";
+import { ProfitabilityResultsListCalculatedCell } from "../../profitability-results-list/components/cells/profitability-results-list-calculated-cell";
+import { ProfitabilityResultsListDateCell } from "../../profitability-results-list/components/cells/profitability-results-list-date-cell";
+import { ProfitabilityResultsListDesiredCell } from "../../profitability-results-list/components/cells/profitability-results-list-desired-cell";
+import { ProfitabilityResultsListDetailsCell } from "../../profitability-results-list/components/cells/profitability-results-list-details-cell";
+import { ProfitabilityResultsListPriceCell } from "../../profitability-results-list/components/cells/profitability-results-list-price-cell";
+import { ProfitabilityResultsListYearsCell } from "../../profitability-results-list/components/cells/profitability-results-list-years-cell";
 
 export function useProfitabilityResultsListColumns() {
   return useMemo(() => {

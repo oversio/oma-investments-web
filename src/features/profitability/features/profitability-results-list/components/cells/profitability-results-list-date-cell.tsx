@@ -1,6 +1,6 @@
-import { Skeleton } from "../../../../../../../common/components/skeleton/skeleton";
-import { DateTimeFormatType, formatDateTime } from "../../../../../../../common/utils/format-date-time";
-import { ProfitabilityResultsListDateCellProps } from "../types";
+import { Skeleton } from "../../../../../../common/components/skeleton/skeleton";
+import { DateTimeFormatType, formatDateTime } from "../../../../../../common/utils/format-date-time";
+import { ProfitabilityResultsListDateCellProps } from "../../types";
 
 export function ProfitabilityResultsListDateCell({ date, isLoading }: ProfitabilityResultsListDateCellProps) {
   return isLoading ? (

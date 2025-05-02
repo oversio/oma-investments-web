@@ -1,28 +1,26 @@
 import { faCheck } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 
-import { Modal } from "../../../../../common/components/modal/modal";
-import { ID } from "../../../../../common/types";
-import { CalculateProfitability } from "../../../api/calculate-profitability/calculate-profitability";
-import { useCalculateProfitability } from "../../../api/calculate-profitability/use-calculate-profitability";
-import { useSaveProfitabilityResults } from "../../../api/save-profitability-results/use-save-profitability-results";
-import { ProfitabilityAnalysisFormSchema } from "../form-schemas/profitability-analysis-form-schema";
-import { AnalysisProfitabilityForm } from "./analysis-profitability-form";
-import { AnalysisProfitabilityResults } from "./analysis-profitability-results";
+import { Modal } from "../../../../common/components/modal/modal";
+import { CalculateProfitability } from "../../api/calculate-profitability/calculate-profitability";
+import { useCalculateProfitability } from "../../api/calculate-profitability/use-calculate-profitability";
+import { useSaveProfitabilityResults } from "../../api/save-profitability-results/use-save-profitability-results";
+import { AnalysisProfitabilityForm } from "./components/analysis-profitability-form";
+import { AnalysisProfitabilityResults } from "./components/analysis-profitability-results";
+import { ProfitabilityAnalysisFormSchema } from "./form-schemas/profitability-analysis-form-schema";
 
-interface AnalysisProfitabilityModalProps {
-  companyId: ID | undefined;
-  onClose: () => void;
-}
+export function AnalysisProfitabilityModal() {
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-export function AnalysisProfitabilityModal({ companyId = "", onClose }: AnalysisProfitabilityModalProps) {
-  const { calculateProfitability, data, isPending, isError } = useCalculateProfitability(companyId);
+  const { calculateProfitability, data, isPending, isError } = useCalculateProfitability(id);
   const {
     saveProfitabilityResults,
     isPending: isSavingProf,
     isError: isErrorSavingProf,
-  } = useSaveProfitabilityResults(companyId);
+  } = useSaveProfitabilityResults(id);
   const [isOpen, setIsOpen] = useState(false);
   const [params, setParams] = useState<ProfitabilityAnalysisFormSchema>();
 
@@ -36,12 +34,12 @@ export function AnalysisProfitabilityModal({ companyId = "", onClose }: Analysis
   const handleClose = async () => {
     setIsOpen(false);
     await new Promise(resolve => setTimeout(resolve, 300));
-    onClose();
+    void navigate("..");
   };
 
   const handleSaveProfitabilityResults = async () => {
     await saveProfitabilityResults({
-      companyId,
+      companyId: id ?? "",
       results: data?.results ?? ({} as CalculateProfitability["results"]),
       years: data?.years ?? [],
       params: data?.params ?? ({} as CalculateProfitability["params"]),
@@ -77,7 +75,7 @@ export function AnalysisProfitabilityModal({ companyId = "", onClose }: Analysis
             params={params}
             results={data?.results}
             years={data?.years}
-            isLoading={!companyId || isPending || isError}
+            isLoading={!id || isPending || isError}
           />
         </>
       ) : null}

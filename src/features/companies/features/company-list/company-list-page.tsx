@@ -5,7 +5,7 @@ import { Outlet } from "react-router";
 
 import { appConfig } from "../../../../app/app-config";
 import { useLayoutContext } from "../../../../common/components/layout/context/layout-context";
-import { LinkButton } from "../../../../common/components/link/link";
+import { LinkButton } from "../../../../common/components/button/link-button";
 import { CompanyList } from "./components/company-list";
 
 export function CompanyListPage() {

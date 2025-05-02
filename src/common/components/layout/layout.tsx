@@ -18,14 +18,14 @@ export function Layout() {
   return (
     <div className="flex h-dvh w-full gap-4">
       <SidebarDrawer
-        className={classMerge("min-w-[288px] rounded-lg", { "min-w-[76px]": isCollapsed })}
+        className={classMerge("min-w-[288px] rounded-lg relative", { "min-w-[76px]": isCollapsed })}
         hideCloseButton={true}
         isOpen={isOpen}
         onOpenChange={onOpenChange}
       >
         <div
           className={classMerge(
-            "will-change relative flex h-full w-72 flex-col bg-default-100 p-6 transition-width",
+            "will-change flex h-full w-72 flex-col bg-default-100 p-6 transition-width sticky top-0",
             {
               "w-[83px] items-center px-[6px] py-6": isCollapsed,
             },

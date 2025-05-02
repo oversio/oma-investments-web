@@ -1,7 +1,7 @@
 import { faPlus } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { LinkButton } from "../../../../../common/components/link/link";
+import { LinkButton } from "../../../../../common/components/button/link-button";
 import { Timeline } from "../../../../../common/components/timeline/timeline";
 import { classMerge } from "../../../../../common/utils/class-merge";
 import { useGetCompany } from "../../../api/get-company/use-get-company";
