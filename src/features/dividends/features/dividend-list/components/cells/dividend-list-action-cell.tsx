@@ -1,7 +1,8 @@
 import { faEye } from "@fortawesome/pro-light-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, PopoverContent, PopoverTrigger, Tooltip } from "@heroui/react";
 
-import { IconButton } from "../../../../../../common/components/icon-button/icon-button";
+import { Button } from "../../../../../../common/components/button/button";
 import { Skeleton } from "../../../../../../common/components/skeleton/skeleton";
 import { DividendListCellProps } from "../../types";
 import { DividendsDetailsList } from "../dividends-detail-list";
@@ -16,7 +17,13 @@ export function DividendListActionCell({ dividends, isLoading }: DividendListCel
           <div>
             <Popover showArrow placement="top">
               <PopoverTrigger>
-                <IconButton icon={faEye} color="secondary" size="sm" />
+                <Button
+                  variant="flat"
+                  isIconOnly
+                  startContent={<FontAwesomeIcon icon={faEye} />}
+                  color="secondary"
+                  size="sm"
+                />
               </PopoverTrigger>
               <PopoverContent className=" w-[400px]">
                 {() => <DividendsDetailsList dividends={dividends} isLoading={isLoading} />}

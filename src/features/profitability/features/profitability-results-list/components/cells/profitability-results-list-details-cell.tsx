@@ -1,10 +1,11 @@
 import { faEye } from "@fortawesome/pro-light-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Skeleton, Tooltip } from "@heroui/react";
 import { useState } from "react";
 
-import { IconButton } from "../../../../../../../common/components/icon-button/icon-button";
-import { AnalysisProfitabilityResultsModal } from "../../analysis-profitability-results-modal";
-import { ProfitabilityResultsListDateCellProps } from "../types";
+import { Button } from "../../../../../../common/components/button/button";
+import { AnalysisProfitabilityResultsModal } from "../../../profitability-analysis/components/analysis-profitability-results-modal";
+import { ProfitabilityResultsListDateCellProps } from "../../types";
 
 export function ProfitabilityResultsListDetailsCell({
   isLoading,
@@ -20,7 +21,14 @@ export function ProfitabilityResultsListDetailsCell({
       ) : (
         <Tooltip content="Ver detalle" placement="right" showArrow>
           <div>
-            <IconButton onPress={() => setIsOpen(true)} icon={faEye} color="secondary" size="sm" />
+            <Button
+              onPress={() => setIsOpen(true)}
+              startContent={<FontAwesomeIcon icon={faEye} />}
+              color="secondary"
+              size="sm"
+              variant="flat"
+              isIconOnly
+            />
           </div>
         </Tooltip>
       )}

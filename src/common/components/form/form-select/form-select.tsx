@@ -50,9 +50,7 @@ export function FormSelect<T extends string | number>({
       }}
     >
       {options.map(({ value, label }) => (
-        <SelectItem key={value} value={value}>
-          {label}
-        </SelectItem>
+        <SelectItem key={value}>{label}</SelectItem>
       ))}
     </Select>
   );

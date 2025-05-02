@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from "react-router";
+import { createBrowserRouter, Navigate, Outlet } from "react-router";
 
 import { Layout } from "../common/components/layout/layout";
 import { ProtectedRoute } from "../common/components/protected-route/protected-route";
@@ -9,6 +9,10 @@ import { CompanyListPage } from "../features/companies/features/company-list/com
 import { CreateCompanyPanel } from "../features/companies/features/create-company/create-company-panel";
 import { DashboardPage } from "../features/dashboard/dashboard-page";
 import { AddDividendPanel } from "../features/dividends/features/add-dividend/components/add-dividend-panel";
+import { DividendListPage } from "../features/dividends/features/dividend-list/dividend-list-page";
+import { UploadDividendModal } from "../features/dividends/features/upload-dividends/components/upload-dividends-modal";
+import { AnalysisProfitabilityModal } from "../features/profitability/features/profitability-analysis/analysis-profitability-modal";
+import { ProfitabilityPage } from "../features/profitability/features/profitability-results-list/profitability-page";
 import { SettingsPage } from "../features/settings/settings-page";
 
 export const router = createBrowserRouter([
@@ -55,8 +59,32 @@ export const router = createBrowserRouter([
                 Component: CompanyDetailsPage,
                 children: [
                   {
-                    path: "add-dividend",
-                    Component: AddDividendPanel,
+                    index: true,
+                    element: <Navigate to="dividends" replace />,
+                  },
+                  {
+                    path: "dividends",
+                    Component: DividendListPage,
+                    children: [
+                      {
+                        path: "new",
+                        Component: AddDividendPanel,
+                      },
+                      {
+                        path: "import",
+                        Component: UploadDividendModal,
+                      },
+                    ],
+                  },
+                  {
+                    path: "profitability",
+                    Component: ProfitabilityPage,
+                    children: [
+                      {
+                        path: "new",
+                        Component: AnalysisProfitabilityModal,
+                      },
+                    ],
                   },
                 ],
               },

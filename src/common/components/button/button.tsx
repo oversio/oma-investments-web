@@ -1,16 +1,37 @@
-import { Button as UIButton, ButtonProps } from "@heroui/react";
+import { ButtonProps as BaseButtonProps, Ripple, Spinner, useButton } from "@heroui/react";
 import { forwardRef } from "react";
 
-import { classMerge } from "../../utils/class-merge";
+export const Button = forwardRef<HTMLButtonElement | null, BaseButtonProps>((props, ref) => {
+  const {
+    domRef,
+    children,
+    spinnerSize,
+    styles,
+    spinner = <Spinner color="current" size={spinnerSize} />,
+    spinnerPlacement,
+    startContent,
+    endContent,
+    isLoading,
+    disableRipple,
+    getButtonProps,
+    getRippleProps,
+  } = useButton({
+    ref,
+    ...props,
+  });
 
-export const Button = forwardRef<HTMLButtonElement | null, ButtonProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <UIButton ref={ref} {...props} className={classMerge(" flex justify-center items-center", className)}>
-        {children}
-      </UIButton>
-    );
-  },
-);
+  const { ripples } = getRippleProps();
 
-Button.displayName = "Button";
+  return (
+    <button ref={domRef} className={styles} {...getButtonProps()}>
+      {startContent}
+      {isLoading && spinnerPlacement === "start" && spinner}
+      {children}
+      {isLoading && spinnerPlacement === "end" && spinner}
+      {endContent}
+      {!disableRipple && <Ripple ripples={ripples} onClear={() => null} />}
+    </button>
+  );
+});
+
+Button.displayName = "LinkButton";

@@ -1,5 +1,5 @@
-import { Skeleton } from "../../../../../../../common/components/skeleton/skeleton";
-import { ProfitabilityResultsListDateCellProps } from "../types";
+import { Skeleton } from "../../../../../../common/components/skeleton/skeleton";
+import { ProfitabilityResultsListDateCellProps } from "../../types";
 
 export function ProfitabilityResultsListDesiredCell({
   isLoading,

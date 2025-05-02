@@ -3,21 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router";
 
 import { FileInput } from "../../../../../common/components/form/file-input/file-input";
 import { RadioGroup, RadioGroupItem } from "../../../../../common/components/form/radio-group/radio-group";
 import { ModalForm } from "../../../../../common/components/modal-form/modal-form";
-import { ID } from "../../../../../common/types";
 import { useUploadDividendsFile } from "../../../api/upload-dividends/use-upload-dividends-file";
 import { UploadDividendsFileSchema } from "../form-schemas/upload-dividends-file-schema";
 
-interface UploadDividendModalProps {
-  companyId: ID | undefined;
-  onClose: () => void;
-}
-
-export function UploadDividendModal({ companyId, onClose }: UploadDividendModalProps) {
-  const { uploadDividends, isPending, isError, error, reset } = useUploadDividendsFile(companyId);
+export function UploadDividendModal() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { uploadDividends, isPending, isError, error, reset } = useUploadDividendsFile(id);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -28,7 +25,7 @@ export function UploadDividendModal({ companyId, onClose }: UploadDividendModalP
   const handleClose = async () => {
     setIsOpen(false);
     await new Promise(resolve => setTimeout(resolve, 200));
-    onClose();
+    void navigate("..");
   };
 
   const form = useForm<UploadDividendsFileSchema>({
@@ -40,7 +37,7 @@ export function UploadDividendModal({ companyId, onClose }: UploadDividendModalP
 
   const handleSubmit = async (input: UploadDividendsFileSchema) => {
     const overwrite = input.overwrite === "true";
-    await uploadDividends({ file: input.file, overwrite }).then(onClose);
+    await uploadDividends({ file: input.file, overwrite }).then(handleClose);
   };
 
   const overwriteOptions: RadioGroupItem[] = [
