@@ -14,6 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/pro-light-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@heroui/framer-utils": "^2.1.15",
     "@heroui/react": "^2.7.8",
     "@hookform/resolvers": "^5.0.1",
     "@tanstack/react-query": "^5.62.11",
@@ -23,17 +24,18 @@
     "dayjs": "^1.11.13",
     "framer-motion": "^12.9.4",
     "js-cookie": "^3.0.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-dropzone": "^14.3.5",
     "react-hook-form": "^7.54.2",
-    "react-intl": "^6.8.9",
+    "react-intl": "^7.1.11",
     "react-router": "^7.5.3",
     "react-router-dom": "^7.5.3",
     "react-toastify": "^10.0.6",
     "react-use": "^17.6.0",
     "recharts": "^2.15.0",
     "tailwind-merge": "^2.6.0",
+    "tailwind-variants": "^1.0.0",
     "usehooks-ts": "^3.1.0",
     "zod": "^3.25.28"
   },
@@ -41,8 +43,8 @@
     "@semantic-release/git": "^10.0.1",
     "@tanstack/eslint-plugin-query": "^5.62.9",
     "@types/js-cookie": "^3.0.6",
-    "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@vitejs/plugin-react-swc": "^3.7.2",
@@ -60,6 +62,5 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2",
     "vite": "^6.3.4"
-  },
-  "packageManager": "yarn@4.9.1"
+  }
 }
